@@ -33,4 +33,4 @@ client.on('message', message =>{
     }
 });
  
-client.login('ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.M1fLqmrryEf98R5U-yTdc-So5-A');
+client.login('bot token ask ferret');
