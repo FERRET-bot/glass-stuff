@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
  
-const prefix = ',';
+const prefix = '!';
  
 const fs = require('fs');
 const grammer = require('./commands/grammer');
@@ -27,11 +27,15 @@ client.on('message', message =>{
     const command = args.shift().toLowerCase();
  
     if(command === 'ping') {
-        client.commands.get('ping').execute(message, args, Discord);
+        client.commands.get('ping').execute(message, Discord);
     } if (command == 'help'){
-        client.commands.get('help').execute(message, args, Discord);
+        client.commands.get('help').execute(message, Discord);
     } if (command == 'nick'){
         client.commands.get('nick').execute(message, args, Discord);
+    }
+    if (command == 'grammer'){
+        client.commands.get('grammer').execute(message,  Discord);
+    }
 });
  
 client.login('ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.WLWS05gBC47APO_epxE38wV7pO0');
