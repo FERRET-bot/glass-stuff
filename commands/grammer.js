@@ -1,7 +1,7 @@
 module.exports = {
     name: 'grammer',
     description: "this is a grammer command",
-    execute(message, args, Discord){
+    execute(message, Discord){
     const grammerembed = new Discord.MessageEmbed()
         .setColor('#FFA500')
         .setTitle('check your grammer')
