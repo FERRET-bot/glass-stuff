@@ -9,7 +9,9 @@ module.exports = {
         .addFields(
         {name: 'ping', value: 'this will test the timing of the ferret and if its active of not.' },
         {name: 'grammer', value: 'make someone check thier grammer'},
-        {name: 'nick', value: 'change your nickname faster'}
+        {name: 'nick', value: 'change your nickname faster'},
+        {name: 'commandPH', value: 'this is a place holder'},
+        {name: 'commandPH', value: 'this is a place holder'},
         )
 
         message.channel.send(helpembed)
