@@ -2,8 +2,4 @@
 
 1)downlaod the files and unzip them
 
-2)move the commands into the commands folder
-
-3)make a folder called node_module
-
-4)move all other folders (not commands) in to node_module
+2) Open main.js file and run it through power shell. Type in power shell 'node .'
