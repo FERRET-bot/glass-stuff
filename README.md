@@ -4,4 +4,6 @@
 
 2)move the commands into the commands folder
 
-3)move all other folders (not commands) in to node_module
+3)make a folder called node_module
+
+4)move all other folders (not commands) in to node_module
