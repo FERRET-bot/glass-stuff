@@ -30,7 +30,8 @@ client.on('message', message =>{
         client.commands.get('ping').execute(message, args, Discord);
     } if (command == 'help'){
         client.commands.get('help').execute(message, args, Discord);
-    }
+    } if (command == 'nick'){
+        client.commands.get('nick').execute(message, args, Discord);
 });
  
 client.login('ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.WLWS05gBC47APO_epxE38wV7pO0');
