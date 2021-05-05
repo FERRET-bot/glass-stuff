@@ -6,4 +6,4 @@ module.exports = {
     client.setNickname({nick: message.content.replace('nick ', '')})
     
         message.channel.send('nickname has been changed!');
-
+}
