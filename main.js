@@ -34,7 +34,7 @@ client.on('message', message =>{
         client.commands.get('nick').execute(message, args, Discord);
     }
     if (command == 'grammer'){
-        client.commands.get('grammer').execute(message,  Discord);
+        client.commands.get('grammer').execute(message, args, Discord);
     }
 });
  
