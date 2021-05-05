@@ -20,6 +20,6 @@ module.exports = {
 
         member.setNickname(nickname)
     
-    message.reply(nickname);
+    message.reply("nickname changed");
     }
 };
