@@ -18,8 +18,11 @@ module.exports = {
         const nickname = args.join(' ')
 
 
-        member.setNickname(nickname)
-    
-    message.reply("nickname changed");
-    }
-};
+        member.setNickname(nickname).then(() => {
+            message.reply('nickname changed');
+        })
+        .catch(err => {
+            message.reply('i was unable to change the nickname of that user');
+        })
+
+}};
