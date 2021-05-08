@@ -1,20 +1,24 @@
-const { MessageAttachment } = require('discord.js');
+const fetch = require('node-fetch');
 module.exports = {
     
     name: 'ferret',
-    description: "this is a command for ferret",
+    description: "this is a command for random ferret",
     execute(message, Discord){
-        if (!message.mentions.users.first()){
-            target = message.author
-        }
-        else{
-            target = message.mentions.users.first()
-        }
-    
-        const attachment = new MessageAttachment('https://img.freepik.com/free-photo/cute-ferret-is-sleeping_369656-37.jpg?size=626&ext=jpg');
-       
-        message.delete()
-    message.channel.send(`${target}, go the fuck to sleep!`, attachment)
+        fetch("https://polecat.me/api/ferret")
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (rere) {
+          const ferretembed = new Discord.MessageEmbed()
+          .setTitle("Random Ferret")
+          .setURL(rere.url)
+          .setImage(rere.url)
+          message.channel.send(ferretembed)
+        })
+        .catch(function (error) {
+          console.log(error)
+          message.channel.send("An error has occured whilst trying to retreive a random ferret.")
+        });
     
     }
 };
