@@ -4,7 +4,6 @@ const client = new Discord.Client();
 const prefix = '!';
  
 const fs = require('fs');
-const grammer = require('./commands/grammer');
  
 client.commands = new Discord.Collection();
  
@@ -32,11 +31,21 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, Discord);
     } if (command == 'nick'){
         client.commands.get('nick').execute(message, args, Discord);
-    }
-    if (command == 'grammer'){
+    } if (command == 'grammer'){
         client.commands.get('grammer').execute(message,  Discord);
     } if(command === 'ferret') {
         client.commands.get('ferret').execute(message, Discord);
+    } if(command === 'slepp') {
+            client.commands.get('sleep').execute(message, Discord);
+    }  if(command === 'msgdelete') {
+        if (message.member.hasPermission("ADMINISTRATOR")){
+            if (parseInt(args)){
+            message.channel.bulkDelete(parseInt(args))
+            }
+        }
+        else{
+            message.channel.send("You lack persmissions to use this command")
+        }
     }
 });
  
