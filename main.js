@@ -31,13 +31,23 @@ client.on('message', message =>{
         client.commands.get('help').execute(message, Discord);
     } if (command == 'nick'){
         client.commands.get('nick').execute(message, args, Discord);
+    } if (command == 'eval'){
+        client.commands.get('eval').execute(message, args, client);
     } if (command == 'grammer'){
         client.commands.get('grammer').execute(message,  Discord);
     } if(command === 'ferret') {
         client.commands.get('ferret').execute(message, Discord);
-    } if(command === 'slepp') {
+    } if(command === 'sleep') {
             client.commands.get('sleep').execute(message, Discord);
-    }  if(command === 'msgdelete') {
+    }if(command === 'numba') {
+        const list = client.guilds.cache.get("822603629814743071").members
+var i = 1
+try{
+  list.cache.forEach(member => setTimeout(function(){ member.setNickname(i).catch(err =>{i = i - 1}); i = i + 1;}, 1000))
+}catch(err){
+  console.log(err)
+}
+    } if(command === 'msgdelete') {
         if (message.member.hasPermission("ADMINISTRATOR")){
             if (parseInt(args)){
             message.channel.bulkDelete(parseInt(args))
