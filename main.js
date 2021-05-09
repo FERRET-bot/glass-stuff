@@ -56,6 +56,8 @@ try{
         else{
             message.channel.send("You lack persmissions to use this command")
         }
+    } if (command === 'newpaste') {
+        client.commands.get('newpaste').execute(message, args);
     }
 });
  
