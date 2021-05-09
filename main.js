@@ -25,6 +25,10 @@ client.on('message', message =>{
  
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
+	
+	// reset config
+	var config = require('./config.json')
+	// reset config
  
     if(command === 'ping') {
         client.commands.get('ping').execute(message, Discord);
@@ -59,7 +63,9 @@ try{
         }
     } if (command === 'newgist') {
         client.commands.get('newgist').execute(message, args);
-    }
+    } if (command === 'shutdown') {
+		client.commands.get('shutdown').execute(message,client,config)
+	}
 });
  
 client.login(config.token);
