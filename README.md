@@ -5,3 +5,5 @@
 2) unzip the discord.js.zip folder inside the node folder
 
 3) Open main.js file and run it through power shell. Type in power shell 'node .'
+
+this is from git!
