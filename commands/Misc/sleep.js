@@ -1,9 +1,11 @@
 const { MessageAttachment } = require('discord.js');
+const Discord = require('discord.js');
 module.exports = {
     
     name: 'sleep',
     description: "this is a command for sleep",
-    execute(message, Discord){
+    usage: "",
+    execute(message, args, client){
         if (!message.mentions.users.first()){
             target = message.author
         }

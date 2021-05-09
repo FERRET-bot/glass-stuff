@@ -1,9 +1,11 @@
 const { DiscordAPIError } = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports = {
     name: 'nick',
     description: "this is a command thats changes your nickname!",
-    execute(message, args, Discord){
+    usage: "[user] <name>",
+    execute(message, args, client){
         
         if (!message.mentions.users.first()){
             target = message.author

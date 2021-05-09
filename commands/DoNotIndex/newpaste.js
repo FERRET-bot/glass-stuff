@@ -8,7 +8,7 @@ module.exports = {
     
     name: 'newgist',
     description: "create a new github gist",
-    async execute(message, args){
+    async execute(message, args, bot){
         var config = require("../../config.json")
 		fetch('https://pastebin.com/api/api_post.php', { method: 'POST', headers: {
 			"api_dev_key": config.jaelyndevkey,

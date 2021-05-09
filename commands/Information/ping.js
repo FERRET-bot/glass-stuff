@@ -1,7 +1,8 @@
+const Discord = require('discord.js');
 module.exports = {
     name: 'ping',
     description: "this is a ping command!",
-    execute(message, Discord){
+    execute(message, args, client, config){
     const pingembed = new Discord.MessageEmbed()
         .setColor('#FFA500')
         .setTitle('PONG!')

@@ -1,7 +1,8 @@
+const Discord = require('discord.js');
 module.exports = {
     name: 'grammer',
     description: "this is a grammer command",
-    execute(message, Discord){
+    execute(message, args, bot){
     const grammerembed = new Discord.MessageEmbed()
         .setColor('#FFA500')
         .setTitle('check your grammer you litle carrot')

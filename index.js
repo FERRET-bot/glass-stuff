@@ -3,6 +3,8 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const bot = client;
+bot.commands = new Discord.Collection();
 var config = require('./config.json')
  
 const prefix = config.prefix;
@@ -40,7 +42,7 @@ bot.on("message", async (message) => { // client or bot
     if (!message.content.startsWith(prefix)) return;
     let cmd = bot.commands.get(command.toLowerCase());
     if (cmd) {
-        cmd.execute(message, args);
+        cmd.execute(message, args, bot, config);
     }
 });
 

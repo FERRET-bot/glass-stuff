@@ -1,13 +1,15 @@
+const Discord = require('discord.js');
+var fs = require('fs')
 module.exports = {
     name: "help",
     desc: "Shows this list.",
     usage: "help <command>",
     cooldown: 5,
-    execute: async (message, args) => {
+    execute: async (message, args, bot) => {
       let prefix = "!"
       message.channel.send("My prefix is \""+prefix+"\"")
       var ncomands = [];
-      let embed = new Discord.RichEmbed();
+      let embed = new Discord.MessageEmbed();
       embed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)
       embed.setTimestamp();
       embed.setAuthor("Ferret Commands:")
@@ -31,7 +33,7 @@ module.exports = {
       if (!args[0]) return message.channel.send(embed)
   
       else {
-        let hembed = new Discord.RichEmbed()
+        let hembed = new Discord.MessageEmbed()
         hembed.setColor("RANDOM")
         hembed.setThumbnail(bot.user.avatarURL)
         hembed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)

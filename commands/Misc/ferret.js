@@ -1,9 +1,10 @@
 const fetch = require('node-fetch');
+const Discord = require('discord.js');
 module.exports = {
     
     name: 'ferret',
     description: "this is a command for random ferret",
-    execute(message, Discord){
+    execute(message, args, bot){
         fetch("https://polecat.me/api/ferret")
         .then(function (response) {
           return response.json()
