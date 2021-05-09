@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var config = require('config.json')
  
-const prefix = '!';
+const prefix = config.prefix;
  
 const fs = require('fs');
  
@@ -56,9 +57,9 @@ try{
         else{
             message.channel.send("You lack persmissions to use this command")
         }
-    } if (command === 'newpaste') {
-        client.commands.get('newpaste').execute(message, args);
+    } if (command === 'newgist') {
+        client.commands.get('newgist').execute(message, args);
     }
 });
  
-client.login('ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.WLWS05gBC47APO_epxE38wV7pO0');
+client.login(config.token);
