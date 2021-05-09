@@ -2,19 +2,20 @@
 // notthatkuna
 // 8:36 PM EST @ 5/8/21
 
+const fetch = require('node-fetch');
+
 module.exports = {
     
     name: 'newgist',
     description: "create a new github gist",
-    execute(message, args){
+    async execute(message, args){
         var config = require("../config.json")
-		const { Octokit } = require("@octokit/core"); // used for git requests
-		var req = await octokit.request('POST /gists', {
-		  files: {
-			  "main.txt": args.slice(1).join(" ")
-		  }
-		}).then(response =>{
-			message.reply(reponse.json().url)
-		})
+		fetch('https://pastebin.com/api/api_post.php', { method: 'POST', headers: {
+			"api_dev_key": config.jaelyndevkey,
+			"api_option": "paste",
+			"api_paste_code": args.slice(1).join(" ")
+		} })
+		.then(res => res.json()) // expecting a json response
+		.then(json => message.reply(json));
     }
 };
