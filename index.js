@@ -13,25 +13,37 @@ const fs = require('fs');
 
 global.chalk = require('chalk');
 
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(bot, ...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(bot, ...args));
+	}
+}
+
+
 try {
-            console.log(`${chalk.red("Loading Commands...")}`);
-            var cnumber = 0;
-            let comands = [];
-            const commandFiles = fs.readdirSync("./commands");
-            commandFiles.forEach((folder) => {
-                const cate = fs.readdirSync(`./commands/${folder}`);
-                comands += chalk.red(`\n${folder}  `);
-                cate.forEach((file) => {
-                    cnumber++;
-                    const command = require(`./commands/${folder}/${file}`);
-                    comands += chalk.green(`${command.name} || `);
-                    bot.commands.set(command.name, command);
-                });
-            });
-            console.log(`Successfully Loaded ${chalk.blue(cnumber)} Commands!\n` + comands);
-        } catch (e) {
-            console.log(chalk.red(`${e.stack}`));
-        }
+    console.log(`${chalk.red("Loading Commands...")}`);
+    var cnumber = 0;
+    let comands = [];
+    const commandFiles = fs.readdirSync("./commands");
+    commandFiles.forEach((folder) => {
+        const cate = fs.readdirSync(`./commands/${folder}`);
+        comands += chalk.red(`\n${folder}  `);
+        cate.forEach((file) => {
+            cnumber++;
+            const command = require(`./commands/${folder}/${file}`);
+            comands += chalk.green(`${command.name} || `);
+            bot.commands.set(command.name, command);
+        });
+    });
+    console.log(`Successfully Loaded ${chalk.blue(cnumber)} Commands!\n` + comands);
+} catch (e) {
+    console.log(chalk.red(`${e.stack}`));
+}
 
 bot.on("message", async (message) => { // client or bot
     if (message.channel.type == "dm") return;
