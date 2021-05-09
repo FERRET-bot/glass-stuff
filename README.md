@@ -1,9 +1,18 @@
 # bot-stuff
 
-1)downlaod the files and unzip them
+[Join the Discord](https://discord.gg/bKMUMASZDh "Discord Server")
 
-2) unzip the discord.js.zip folder inside the node folder
+### Developers
 
-3) Open main.js file and run it through power shell. Type in power shell 'node .'
+* [Ferret](https://discord.com/users/795003099642462218/)
+* [Spooder](https://discord.com/users/363011989099773954)
+* [Jaelyn](https://discord.com/users/498984530968051713)
 
-this is from git!
+### How to use
+
+1) git clone from HTTPS or download as Zip and unzip to a location
+2) run ``node index.js``
+3) ``npm install ``any missing libraries
+
+#### Status
+Not Released
