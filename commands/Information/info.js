@@ -19,8 +19,7 @@ module.exports = {
       info.addField('owners', 'DISCORD.BOT, jaelyn')
       info.addField('prefix', '!')
       info.addField('verson', '1.0.6')
-
-
+//ther is proberbly a better way but i cant do it atm!!!//
 
     message.channel.send(info)
     }}
