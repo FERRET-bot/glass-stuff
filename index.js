@@ -12,9 +12,10 @@ const prefix = config.prefix;
 const fs = require('fs');
 
 function checker(value) {
+    var prohibited = ['banana', 'apple'];
     for (var i = 0; i < prohibited.length; i++) {
         if (value.indexOf(prohibited[i]) > -1) {
-        return false;
+            return false;
         }
     }
     return true;
