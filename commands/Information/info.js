@@ -16,8 +16,11 @@ module.exports = {
       info.setThumbnail("https://www.bing.com/images/blob?bcid=RBE-Tm.CxroC5NvTZVNmjsTFKyOl.....88")
       info.setColor('#28ff00')
       info.setDescription('the info seen below is the newest info about the bot')
-      info.addField(`verson`, `1.3.0` )
-    
-    
+      info.addField('owners', 'DISCORD.BOT, jaelyn')
+      info.addField('prefix', '!')
+      info.addField('verson', '1.0.6')
+
+
+
     message.channel.send(info)
     }}
