@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
-var fs = require('fs')
+var fs = require('fs');
 module.exports = {
     name: "help",
     desc: "Shows this list.",
-    usage: "help <command>",
+    usage: "<command>",
     cooldown: 5,
-    execute: async (message, args, bot) => {
+    execute: async (message, args, bot, config) => {
       let prefix = "!"
       message.channel.send("My prefix is \""+prefix+"\"")
       var ncomands = [];
@@ -18,7 +18,7 @@ module.exports = {
       const commandFiles = fs.readdirSync("./commands");
       commandFiles.forEach((folder) => {
         var cnumber = 0;
-        if (folder == "DoNotIndex") return;
+        if ((folder == "DoNotIndex") && (!config.devs.includes(message.author.id))) return;
         var ccommands = []
         const cate = fs.readdirSync(__dirname + `/../${folder}`);
         ncomands += `\n**${folder}**:\n`
@@ -41,7 +41,7 @@ module.exports = {
         hembed.setDescription("Ferret")
         var cmdnumb = 0
         commandFiles.forEach((folder) => {
-          if (folder == "DoNotIndex") return;
+          if ((folder == "DoNotIndex") && (!config.devs.includes(message.author.id))) return;
           const cate = fs.readdirSync(__dirname + `/../${folder}`);
           cate.forEach((file) => {
             const command = require(__dirname + `/../${folder}/${file}`);
