@@ -6,8 +6,7 @@ module.exports = {
     usage: "<command>",
     cooldown: 5,
     execute: async (message, args, bot, config) => {
-      let prefix = "!"
-      message.channel.send("My prefix is \""+prefix+"\"")
+      message.channel.send("My prefix is \""+config.prefixes+"\"")
       var ncomands = [];
       let embed = new Discord.MessageEmbed();
       embed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)

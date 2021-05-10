@@ -7,7 +7,7 @@ module.exports = {
     usage: "",
     cooldown: 5,
     execute: async (message, args, bot, config) => {
-      message.channel.send("My prefix is \""+config.prefix+"\"")
+      message.channel.send("My prefixes are \""+config.prefixes+"\"")
 
       let info = new Discord.MessageEmbed
       info.setTitle('the current info about the bot')
@@ -15,7 +15,7 @@ module.exports = {
       info.setColor('#28ff00')
       info.setDescription('the info seen below is the newest info about the bot')
       info.addField('owners', "``"+config.devnames+"``")
-      info.addField('prefix', "``"+config.prefix+"``")
+      info.addField('prefixes', "``"+config.prefixes+"``")
       info.addField('verson', "``"+config.version+"``")
 
     message.channel.send(info)

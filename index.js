@@ -11,6 +11,14 @@ const prefix = config.prefix;
  
 const fs = require('fs');
 
+function checker(value) {
+    for (var i = 0; i < prohibited.length; i++) {
+        if (value.indexOf(prohibited[i]) > -1) {
+        return false;
+        }
+    }
+    return true;
+}
 global.chalk = require('chalk');
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
@@ -47,11 +55,12 @@ try {
 
 bot.on("message", async (message) => { // client or bot
     if (message.channel.type == "dm") return;
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const args = message.content.slice(1).split(/ +/);
     const command = args.shift();
     if (message.author.bot) return;
-    if (message.author.bot && message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(prefix)) return;
+    var results = checker(message.content.slice(1,1))
+    if (message.author.bot && results == false) return;
+    if (!results == true) return;
     let cmd = bot.commands.get(command.toLowerCase());
     if (cmd) {
         cmd.execute(message, args, bot, config);
