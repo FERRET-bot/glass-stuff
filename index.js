@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const bot = client;
 bot.commands = new Discord.Collection();
+bot.cooldowns = new Discord.Collection();
 var config = require('./config.json')
   
 const fs = require('fs');
@@ -62,7 +63,25 @@ bot.on("message", async (message) => { // client or bot
     if (!results == true) return;
     let cmd = bot.commands.get(command.toLowerCase());
     if (cmd) {
+
+        if (!bot.cooldowns.has(cmd.name.toString())) {
+            bot.cooldowns.set(cmd.name.toString(), new Discord.Collection());
+        }
+
+        const now = Date.now();
+        const timestamps = bot.cooldowns.get(cmd.name);
+        const cooldownAmount = (cmd.cooldown || config.defaultcooldown) * 1000;
+
+        if (timestamps.has(message.author.id)) {
+            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+            if (now < expirationTime) {
+                const timeLeft = (expirationTime - now) / 1000;
+                return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+            }
+        }
         cmd.execute(message, args, bot, config);
+        timestamps.set(message.author.id, now);
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     }
 });
 

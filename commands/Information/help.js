@@ -3,8 +3,8 @@ var fs = require('fs');
 module.exports = {
     name: "help",
     desc: "Shows this list.",
-    usage: "<command>",
-    cooldown: 5,
+    usage: "[command]",
+    cooldown: 10,
     execute: async (message, args, bot, config) => {
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
       var ncomands = [];

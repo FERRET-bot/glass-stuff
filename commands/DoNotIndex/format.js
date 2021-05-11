@@ -4,6 +4,7 @@ module.exports = {
     name: 'getformat',
     description: "Gets the command creation format",
     usage: "",
+    cooldown: 10,
     async execute(message, args, bot, config){
         message.channel.send("[] = optional\n<> = required\n```js\n"+config.cmdformat+"```")
     }

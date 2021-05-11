@@ -5,6 +5,7 @@ module.exports = {
     name: 'nick',
     description: "this is a command thats changes your nickname!",
     usage: "[user] <name>",
+    cooldown: 5,
     execute(message, args, client){
         
         if (!message.mentions.users.first()){
