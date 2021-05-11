@@ -6,7 +6,7 @@ module.exports = {
     usage: "<command>",
     cooldown: 5,
     execute: async (message, args, bot, config) => {
-      message.channel.send("My prefix is \""+config.prefixes+"\"")
+      message.channel.send("My prefixes are \""+config.prefixes+"\"")
       var ncomands = [];
       let embed = new Discord.MessageEmbed();
       embed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)
@@ -44,7 +44,7 @@ module.exports = {
           const cate = fs.readdirSync(__dirname + `/../${folder}`);
           cate.forEach((file) => {
             const command = require(__dirname + `/../${folder}/${file}`);
-            let usage = `\`${prefix}${command.name} ${command.usage}\``
+            let usage = `\`${config.prefixes}${command.name} ${command.usage}\``
             if (command.name == args[0].toLowerCase()) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())

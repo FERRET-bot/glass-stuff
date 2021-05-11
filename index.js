@@ -6,9 +6,7 @@ const client = new Discord.Client();
 const bot = client;
 bot.commands = new Discord.Collection();
 var config = require('./config.json')
- 
-const prefix = config.prefix;
- 
+  
 const fs = require('fs');
 
 function checker(value) {
