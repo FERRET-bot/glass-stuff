@@ -16,7 +16,7 @@ module.exports = {
       info.setDescription('the info seen below is the newest info about the bot')
       info.addField('owners', "``"+config.devnames+"``")
       info.addField('prefixes', "``"+config.prefixes+"``")
-      info.addField('verson', "``"+config.version+"``")
+      info.addField('version', "``"+config.version+"``")
 
     message.channel.send(info)
     }}
