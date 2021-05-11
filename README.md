@@ -5,7 +5,6 @@
 ### Developers
 
 * [Ferret](https://discord.com/users/795003099642462218/)
-* [Spooder](https://discord.com/users/363011989099773954)
 * [Jaelyn](https://discord.com/users/498984530968051713)
 
 ### How to use
