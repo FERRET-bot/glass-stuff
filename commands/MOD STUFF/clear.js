@@ -11,9 +11,9 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
 
 
-        if (value >= "100"){return message.channel.send("Value is to large");}
+        if (value >= 100){return message.channel.send(`Value is to large, value = ${value} `);}
 
-        message.delete().then(promise => {message.channel.send("done!")})
+        message.channel.bulkDelete(value).then(promise => {message.channel.send("done!")})
 
 
 
