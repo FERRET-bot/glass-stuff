@@ -44,7 +44,7 @@ module.exports = {
           const cate = fs.readdirSync(__dirname + `/../${folder}`);
           cate.forEach((file) => {
             const command = require(__dirname + `/../${folder}/${file}`);
-            let usage = `\`${config.prefixes}${command.name} ${command.usage}\``
+            let usage = `\`${config.prefixes[0]}${command.name} ${command.usage}\``
             if (command.name == args[0].toLowerCase()) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())
