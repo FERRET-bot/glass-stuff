@@ -6,6 +6,7 @@ module.exports = {
     description: "this is a command for random ferret",
     usage: "",
     cooldown: 10,
+    aliases: [],
     execute(message, args, bot){
         fetch("https://polecat.me/api/ferret")
         .then(function (response) {

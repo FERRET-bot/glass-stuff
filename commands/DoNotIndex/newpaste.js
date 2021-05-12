@@ -10,6 +10,7 @@ module.exports = {
     description: "create a new github gist",
     usage: "<args>",
     cooldown: 120,
+    aliases: [],
     async execute(message, args, bot){
         message.channel.send("Hello, this command is currently unavailable as it is not working as it is intended to.")
     }

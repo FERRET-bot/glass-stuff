@@ -2,9 +2,10 @@ const Discord = require('discord.js');
 var fs = require('fs');
 module.exports = {
     name: "help",
-    desc: "Shows this list.",
+    description: "Shows this list.",
     usage: "[command]",
     cooldown: 10,
+    aliases: ["commands"],
     execute: async (message, args, bot, config) => {
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
       var ncomands = [];
@@ -48,7 +49,7 @@ module.exports = {
             if (command.name == args[0].toLowerCase()) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())
-              hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.desc}\nUsage: \`${usage}\``)
+              hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\nAliases: \``+command.aliases+`\``)
             }
           })
         })

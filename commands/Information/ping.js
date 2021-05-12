@@ -4,6 +4,7 @@ module.exports = {
     description: "this is a ping command!",
     usage: "",
     cooldown: 5,
+    aliases: ["latency"],
     execute(message, args, client, config){
         message.channel.send("1").then(m => {
             var ping = m.createdTimestamp - message.createdTimestamp;

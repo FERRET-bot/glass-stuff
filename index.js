@@ -2,8 +2,8 @@
 // command wrapper
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const bot = client;
+var client = new Discord.Client();
+var bot = client;
 bot.commands = new Discord.Collection();
 bot.cooldowns = new Discord.Collection();
 var config = require('./config.json')
@@ -61,7 +61,10 @@ bot.on("message", async (message) => { // client or bot
     var results = checker(message.content.slice(1,1))
     if (message.author.bot && results == false) return;
     if (!results == true) return;
-    let cmd = bot.commands.get(command.toLowerCase());
+    let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+    if (!cmd){
+        cmd = bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase()))
+    }
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {

@@ -6,6 +6,7 @@ module.exports = {
     description: "this is a command for sleep",
     usage: "[user] <name> / []",
     cooldown: 15,
+    aliases: [],
     execute(message, args, client){
         if (!message.mentions.users.first()){
             target = message.author

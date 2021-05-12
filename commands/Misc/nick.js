@@ -6,6 +6,7 @@ module.exports = {
     description: "this is a command thats changes your nickname!",
     usage: "[user] <name>",
     cooldown: 5,
+    aliases: ["setname","setnick"],
     execute(message, args, client){
         
         if (!message.mentions.users.first()){

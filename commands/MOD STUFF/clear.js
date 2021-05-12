@@ -4,6 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'clear',
       description: "clear a set number of messages",
       usage: "<number>",
+      aliases: ['purge'],
       async execute(message, args, bot, config){
           
         if (!config.devs.includes(message.author.id.toString())){return message.reply("Only my owners can use this command")}

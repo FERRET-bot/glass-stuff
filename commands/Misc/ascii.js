@@ -6,6 +6,7 @@ module.exports = {
     description: "Converts video attachment to ascii",
     usage: "<video as an attachment>",
     cooldown: 10,
+    aliases: [],
     async execute(message, args, bot, config){
         var asciify = require('asciify-image');
  
