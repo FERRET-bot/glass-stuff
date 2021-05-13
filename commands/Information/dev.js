@@ -1,7 +1,7 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
-      name: 'dec',
+      name: 'dev',
       description: `ask the devs a question/give feedback!`,
       usage: "<question/feedback>",
       cooldown: 120,
