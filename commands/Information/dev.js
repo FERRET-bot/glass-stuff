@@ -1,21 +1,21 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
-      name: 'ask',
-      description: `ask the devs a question`,
-      usage: "<question>",
+      name: 'dec',
+      description: `ask the devs a question/give feedback!`,
+      usage: "<question/feedback>",
       cooldown: 120,
-      aliases: ["ask"],
+      aliases: ["dev"],
       async execute(message, args, bot, config){
         const asker = message.author
         const username = message.author.username
-        message.channel.send(`${asker} your question has been asked`);
+        message.channel.send(`${asker} your message has been sent to the devs, thank you!!`);
         
         const question = args.join().replace(/,/g, " ");
 
 
             const askembed = new Discord.MessageEmbed()
-            .setTitle(`${username} has asked (${asker})`)
+            .setTitle(`${username}  (${asker})`)
             .setDescription(question)
             var channels = bot.channels
             var cache = channels.cache
