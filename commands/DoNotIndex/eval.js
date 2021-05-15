@@ -64,7 +64,7 @@ module.exports = {
         .setFooter(`Node.js - Time taken: ${Date.now() - message.createdTimestamp} ms`);
             msg.edit({
                 embed: evalcode
-            }).catch(e => logger.error(e));
+            }).catch(e => console.log(e));
         } catch (err) {
             let errorcode = new Discord.MessageEmbed()
         .setAuthor(`Eval by ${message.author.tag}`, `https://cdn.discordapp.com/emojis/314405560701419520.png`)
