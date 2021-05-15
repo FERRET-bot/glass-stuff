@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
-var fs = require('fs')
+var fs = require('fs');
 module.exports = {
     name: "help",
-    desc: "Shows this list.",
-    usage: "help <command>",
-    cooldown: 5,
-    execute: async (message, args, bot) => {
-      let prefix = "!"
-      message.channel.send("My prefix is \""+prefix+"\"")
+    description: "Shows this list.",
+    usage: "[command]",
+    cooldown: 10,
+    aliases: ["commands"],
+    execute: async (message, args, bot, config) => {
+      message.channel.send("My prefixes are \""+config.prefixes+"\"")
       var ncomands = [];
       let embed = new Discord.MessageEmbed();
       embed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)
@@ -18,7 +18,7 @@ module.exports = {
       const commandFiles = fs.readdirSync("./commands");
       commandFiles.forEach((folder) => {
         var cnumber = 0;
-        if (folder == "DoNotIndex") return;
+        if ((folder == "DoNotIndex") && (!config.devs.includes(message.author.id))) return;
         var ccommands = []
         const cate = fs.readdirSync(__dirname + `/../${folder}`);
         ncomands += `\n**${folder}**:\n`
@@ -41,15 +41,15 @@ module.exports = {
         hembed.setDescription("Ferret")
         var cmdnumb = 0
         commandFiles.forEach((folder) => {
-          if (folder == "DoNotIndex") return;
+          if ((folder == "DoNotIndex") && (!config.devs.includes(message.author.id))) return;
           const cate = fs.readdirSync(__dirname + `/../${folder}`);
           cate.forEach((file) => {
             const command = require(__dirname + `/../${folder}/${file}`);
-            let usage = `\`${prefix}${command.name} ${command.usage}\``
+            let usage = `\`${config.prefixes[0]}${command.name} ${command.usage}\``
             if (command.name == args[0].toLowerCase()) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())
-              hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.desc}\nUsage: \`${usage}\``)
+              hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\nAliases: \``+command.aliases+`\``)
             }
           })
         })

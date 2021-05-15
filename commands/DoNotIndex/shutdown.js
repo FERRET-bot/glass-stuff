@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'shutdown',
     description: "Shuts down the bot",
+	usage: "",
+	cooldown: 0,
+	aliases: ["kill", "stop"],
     execute(message, args, client, config){
 		if (!config.devs.includes(message.author.id.toString())){return message.reply("Only my owners can use this command")}
 		var nd = new Date()

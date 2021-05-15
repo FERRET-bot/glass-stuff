@@ -8,14 +8,10 @@ module.exports = {
     
     name: 'newgist',
     description: "create a new github gist",
+    usage: "<args>",
+    cooldown: 120,
+    aliases: [],
     async execute(message, args, bot){
-        var config = require("../../config.json")
-		fetch('https://pastebin.com/api/api_post.php', { method: 'POST', headers: {
-			"api_dev_key": config.jaelyndevkey,
-			"api_option": "paste",
-			"api_paste_code": args.slice(1).join(" ")
-		} })
-		.then(res => res.json()) // expecting a json response
-		.then(json => message.reply(json));
+        message.channel.send("Hello, this command is currently unavailable as it is not working as it is intended to.")
     }
 };

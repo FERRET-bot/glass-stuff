@@ -2,15 +2,23 @@
 // command wrapper
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
-const bot = client;
+var client = new Discord.Client();
+var bot = client;
 bot.commands = new Discord.Collection();
+bot.cooldowns = new Discord.Collection();
 var config = require('./config.json')
- 
-const prefix = config.prefix;
- 
+  
 const fs = require('fs');
 
+function checker(value) {
+    var prohibited = ['banana', 'apple'];
+    for (var i = 0; i < prohibited.length; i++) {
+        if (value.indexOf(prohibited[i]) > -1) {
+            return false;
+        }
+    }
+    return true;
+}
 global.chalk = require('chalk');
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
@@ -47,14 +55,36 @@ try {
 
 bot.on("message", async (message) => { // client or bot
     if (message.channel.type == "dm") return;
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const args = message.content.slice(1).split(/ +/);
     const command = args.shift();
     if (message.author.bot) return;
-    if (message.author.bot && message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(prefix)) return;
-    let cmd = bot.commands.get(command.toLowerCase());
+    var results = checker(message.content.slice(1,1))
+    if (message.author.bot && results == false) return;
+    if (!results == true) return;
+    let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+    if (!cmd){
+        cmd = bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase()))
+    }
     if (cmd) {
+
+        if (!bot.cooldowns.has(cmd.name.toString())) {
+            bot.cooldowns.set(cmd.name.toString(), new Discord.Collection());
+        }
+
+        const now = Date.now();
+        const timestamps = bot.cooldowns.get(cmd.name);
+        const cooldownAmount = (cmd.cooldown || config.defaultcooldown) * 1000;
+
+        if (timestamps.has(message.author.id)) {
+            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+            if (now < expirationTime) {
+                const timeLeft = (expirationTime - now) / 1000;
+                return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+            }
+        }
         cmd.execute(message, args, bot, config);
+        timestamps.set(message.author.id, now);
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     }
 });
 

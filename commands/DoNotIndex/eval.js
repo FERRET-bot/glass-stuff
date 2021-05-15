@@ -6,7 +6,8 @@ module.exports = {
   name: "eval",
   desc: "Eval code or expression",
   usage: "<expression>",
-  cooldown: 5,
+  aliases: ["run", "exec"],
+  cooldown: 2,
   execute: async (message, args, client, config) => {
       var client=client
       let auth = ["795003099642462218", "363011989099773954","498984530968051713"] // no one but these two IDs can use this command
