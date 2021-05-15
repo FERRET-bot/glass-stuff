@@ -11,7 +11,7 @@ module.exports = {
             const giphy = require("giphy-api")(config.giphykey) // config.giphykey
             giphy.random({
                 tag: args.join(" ").toString(),
-                rating: 'pg-13',
+                rating: 'g',
                 fmt: 'json'
             }).then(res => {
                 message.channel.send(res.data.url.toString())

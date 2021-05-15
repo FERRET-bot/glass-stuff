@@ -6,6 +6,7 @@ var client = new Discord.Client();
 var bot = client;
 bot.commands = new Discord.Collection();
 bot.cooldowns = new Discord.Collection();
+bot.notracebackmode = false
 var config = require('./config.json')
   
 const fs = require('fs');
@@ -55,6 +56,11 @@ try {
 
 bot.on("message", async (message) => { // client or bot
     if (message.channel.type == "dm") return;
+    if (bot.notracebackmode === true && message.author.id === bot.user.id){
+        setTimeout(() => {
+            message.delete();
+        }, config.notracebacktimeout);
+    }
     const args = message.content.slice(1).split(/ +/);
     const command = args.shift();
     if (message.author.bot) return;
