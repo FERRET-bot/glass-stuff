@@ -67,10 +67,12 @@ bot.on("message", async (message) => { // client or bot
     var results = checker(message.content.slice(1,1))
     if (message.author.bot && results == false) return;
     if (!results == true) return;
+    var pref = undefined;
+    config.prefixes.forEach(prfx=>{
+        if (message.content.startsWith(prfx)) pref = prfx;
+    })
+    if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
-    if (!cmd){
-        cmd = bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase()))
-    }
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {
