@@ -17,6 +17,7 @@ module.exports = {
       info.addField('owners', "``"+config.devnames+"``")
       info.addField('prefixes', "``"+config.prefixes+"``")
       info.addField('version', "``"+config.version+"``")
+      info.addField('contact (email)', "``jaelyn@jaedev.net``")
 
     message.channel.send(info)
     }}

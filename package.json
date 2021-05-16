@@ -12,6 +12,8 @@
     "@octokit/core": "^3.4.0",
     "aalib.js": "^2.0.0",
     "asciify-image": "^0.1.6",
+    "canvas": "^2.7.0",
+    "canvas-constructor": "^4.1.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
     "ffmpeg-static": "^4.3.0",
