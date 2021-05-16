@@ -5,7 +5,6 @@ const Discord = require('discord.js'); // used for message embeds, etc
       description: `ask the devs a question/give feedback!`,
       usage: "<question/feedback>",
       cooldown: 120,
-      aliases: [""],
       async execute(message, args, bot, config){
         const asker = message.author
         const username = message.author.username
