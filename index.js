@@ -84,10 +84,6 @@ bot.on("message", async (message) => { // client or bot
         }
         // Insert a single document, wait for promise so we can read it back
         const p = await col.insertOne(personDocument);
-        // Find one document
-        const myDoc = await col.findOne();
-        // Print to the console
-        console.log(myDoc);
     }else{
         col.updateOne({id:message.author.id.toString()}, {$set: {level: new Date().toString()}});
     }
