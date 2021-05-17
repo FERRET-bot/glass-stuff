@@ -3,11 +3,17 @@
 
 const Discord = require('discord.js');
 var client = new Discord.Client();
+client.MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
+client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 var bot = client;
 bot.commands = new Discord.Collection();
 bot.cooldowns = new Discord.Collection();
 bot.notracebackmode = false
 var config = require('./config.json')
+
+
   
 const fs = require('fs');
 
@@ -67,6 +73,24 @@ bot.on("message", async (message) => { // client or bot
     var results = checker(message.content.slice(1,1))
     if (message.author.bot && results == false) return;
     if (!results == true) return;
+    const db = client.mcclient.db("Leveling");
+    // Use the collection "people"
+    const col = db.collection("levels");
+    if(!col.find(message.author.id.toString())){
+        // Construct a document                                                                                                                                                              
+        let personDocument = {
+            "id": message.author.id.toString(),
+            "level": 1
+        }
+        // Insert a single document, wait for promise so we can read it back
+        const p = await col.insertOne(personDocument);
+        // Find one document
+        const myDoc = await col.findOne();
+        // Print to the console
+        console.log(myDoc);
+    }else{
+        col.updateOne({id:message.author.id.toString()}, {$set: {level: Date.now().toString()}});
+    }
     var pref = undefined;
     config.prefixes.forEach(prfx=>{
         if (message.content.startsWith(prfx)) pref = prfx;

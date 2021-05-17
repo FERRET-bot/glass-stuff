@@ -16,8 +16,11 @@
     "canvas-constructor": "^4.1.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
+    "faunadb": "^4.2.0",
     "ffmpeg-static": "^4.3.0",
     "giphy-api": "^2.0.1",
+    "mongodb": "^3.6.6",
+    "mysql": "^2.18.1",
     "opusscript": "0.0.8"
   }
 }
