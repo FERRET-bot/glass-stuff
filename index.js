@@ -89,7 +89,7 @@ bot.on("message", async (message) => { // client or bot
         // Print to the console
         console.log(myDoc);
     }else{
-        col.updateOne({id:message.author.id.toString()}, {$set: {level: Date.now().toString()}});
+        col.updateOne({id:message.author.id.toString()}, {$set: {level: new Date().toString()}});
     }
     var pref = undefined;
     config.prefixes.forEach(prfx=>{
