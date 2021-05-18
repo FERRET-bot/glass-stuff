@@ -19,7 +19,7 @@ module.exports = {
         }else{
             const giphy = require("giphy-api")(config.giphykey) // config.giphykey
             giphy.random({
-                tag: 'ferret',
+                tag: 'ferret ',
                 rating: 'g',
                 fmt: 'json'
             }).then(res => {
