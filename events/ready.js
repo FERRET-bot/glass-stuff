@@ -19,10 +19,5 @@ module.exports = {
         var cache = channels.cache
         var getter = cache.get("841008670125064223")
         getter.send(msg)
-        await client.mcclient.connect(err => {
-            const collection = client.mcclient.db("test").collection("devices");
-            // perform actions on the collection object
-        });
-        getter.send("Correctly conneted to MongoDB on Atlas dr")
 	},
 };
