@@ -1,15 +1,12 @@
 {
   "version": "1.0.0",
-  "mysql": {
-    "host": "jaedev.net",
-    "user": "jaedevne_WPPRX",
-    "password": "DBHOLDER!"
-  },
   "prefixes": ["!","?"],
   "token": "ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.K9-vvd0vBAPzFZQiBWIC3LQ9t6Q",
-  "jaelyndevkey": "wOyO75DDUZbRrND2dXjILRHSONqiiJKR",
-  "giphykey": "j1sSwm5qs0wove3fEx4igjbhTvb3g6gn",
   "defaultcooldown": 1,
+  "notracebacktimeout": 5000,
+  
+  "giphykey": "j1sSwm5qs0wove3fEx4igjbhTvb3g6gn",
+  
   "devs": [
 	"795003099642462218",
 	"498984530968051713"
@@ -18,6 +15,8 @@
     "DISCORD.BOT",
     "Jaelyn"
   ],
-  "notracebacktimeout": 5000,
+
+
+  
   "cmdformat": "const Discord = require('discord.js'); // used for message embeds, etc\n\n  module.exports = {\n      name: 'CommandName',\n      description: \"What to display on the help page\",\n      usage: \"<required arg> [optional arg]\",\n      cooldown: 5,\n      aliases: [\"cmd\",\"a\"],\n      async execute(message, args, bot, config){\n          \n      }\n };"
 }
