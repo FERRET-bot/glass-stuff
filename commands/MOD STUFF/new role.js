@@ -2,9 +2,9 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
       name: 'newrole',
-      description: "makes a new role, there must be a / between the name/reason",
+      description: "makes a new role, [there must be a / between the name/reason]",
       usage: "<name>/<reason>",
-      cooldown: 5,
+      cooldown: 1,
       aliases: ["newrole"],
       async execute(message, args, bot, config){
 
