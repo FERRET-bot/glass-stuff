@@ -80,12 +80,18 @@ bot.on("message", async (message) => { // client or bot
         // Construct a document                                                                                                                                                              
         let personDocument = {
             "id": message.author.id.toString(),
-            "level": 1
+            "level": 1,
+            "exp": 0,
         }
+        console.log("Created doc for "+message.author.id.toString());
         // Insert a single document, wait for promise so we can read it back
         const p = await col.insertOne(personDocument);
     }else{
-        col.updateOne({id:message.author.id.toString()}, {$set: {level: new Date().toString()}});
+        console.log("updating")
+        col.updateOne({id:message.author.id.toString()}, {$set: {
+            level: new Date().toString(),
+            exp: col.find(message.author.id.toString()).exp+1
+        }});
     }
     var pref = undefined;
     config.prefixes.forEach(prfx=>{
