@@ -73,26 +73,6 @@ bot.on("message", async (message) => { // client or bot
     var results = checker(message.content.slice(1,1))
     if (message.author.bot && results == false) return;
     if (!results == true) return;
-    const db = client.mcclient.db("Leveling");
-    // Use the collection "people"
-    const col = db.collection("levels");
-    if(!col.find(message.author.id.toString())){
-        // Construct a document                                                                                                                                                              
-        let personDocument = {
-            "id": message.author.id.toString(),
-            "level": 1,
-            "exp": 0,
-        }
-        console.log("Created doc for "+message.author.id.toString());
-        // Insert a single document, wait for promise so we can read it back
-        const p = await col.insertOne(personDocument);
-    }else{
-        console.log("updating")
-        col.updateOne({id:message.author.id.toString()}, {$set: {
-            level: new Date().toString(),
-            exp: col.find(message.author.id.toString()).exp+1
-        }});
-    }
     var pref = undefined;
     config.prefixes.forEach(prfx=>{
         if (message.content.startsWith(prfx)) pref = prfx;
