@@ -4,6 +4,7 @@
   "token": "ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.K9-vvd0vBAPzFZQiBWIC3LQ9t6Q",
   "defaultcooldown": 1,
   "notracebacktimeout": 5000,
+  "loaded": false,
   
   "giphykey": "j1sSwm5qs0wove3fEx4igjbhTvb3g6gn",
   

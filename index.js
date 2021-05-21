@@ -61,6 +61,7 @@ try {
 }
 
 bot.on("message", async (message) => { // client or bot
+    config = require('./config.json')
     if (message.channel.type == "dm") return;
     if (bot.notracebackmode === true && message.author.id === bot.user.id){
         setTimeout(() => {
@@ -79,6 +80,7 @@ bot.on("message", async (message) => { // client or bot
     })
     if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+    if (!config.loaded) return message.reply("The bot is loading, please wait until completion. Try again later!")
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {
