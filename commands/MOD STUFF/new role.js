@@ -4,7 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'newrole',
       description: "makes a new role, [there must be a / between the name/reason]",
       usage: "<name>/<reason>",
-      cooldown: 1,
+      cooldown: 30,
       aliases: ["newrole"],
       async execute(message, args, bot, config){
 
