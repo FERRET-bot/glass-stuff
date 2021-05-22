@@ -7,11 +7,11 @@ module.exports = {
     aliases: ["latency"],
     execute(message, args, client, config){
         message.channel.send("1").then(m => {
-            var ping = m.createdTimestamp - Date.now();
+            var ping = Date.now() - m.createdTimestamp;
             message.channel.send("2").then(m2 =>{
-                var ping2 = m2.createdTimestamp - Date.now();
+                var ping2 = Date.now() - m2.createdTimestamp;
                 message.channel.send("3").then(m3 =>{
-                    var ping3 = m3.createdTimestamp - Date.now();
+                    var ping3 = Date.now() - m3.createdTimestamp;
                     message.channel.send("4").then(m4=>{
                         var ping4 = m4.createdTimestamp - Date.now();
                         const pingembed = new Discord.MessageEmbed()
