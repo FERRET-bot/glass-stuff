@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.3",
   "prefixes": ["!","?"],
   "token": "ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.K9-vvd0vBAPzFZQiBWIC3LQ9t6Q",
   "defaultcooldown": 1,
@@ -13,7 +13,7 @@
 	"498984530968051713"
   ],
   "devnames": [
-    "DISCORD.BOT",
+    "FERRET.BOT",
     "Jaelyn"
   ],
 
