@@ -11,6 +11,7 @@ var bot = client;
 bot.commands = new Discord.Collection();
 bot.cooldowns = new Discord.Collection();
 bot.notracebackmode = false
+bot.piglatincache = new Discord.Collection();
 var config = require('./config.json')
 
 

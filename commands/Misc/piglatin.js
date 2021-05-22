@@ -10,15 +10,22 @@ module.exports = {
         if(!args || args.length < 1) return message.reply("Please specify something to translate.")
         const PigLatin = require("pig-latinizer").default
  
-        const pigLatin = new PigLatin()
-        try{
-            const translated = pigLatin.translate(args.join(' '))
-            var ping = message.createdTimestamp - Date.now();
-            message.channel.send(translated).then(a=>{
-                a.edit(translated.toString()+"\n``Time taken to translate: "+ping.toString()+" MS` `")
+        if(bot.piglatincache.get(message.content.toString())){
+            message.channel.send(bot.piglatincache.get(message.content.toString())).then(m=>{
+                m.edit(bot.piglatincache.get(message.content.toString())+"\n``Translation pulled from cache, translation instant``")
             })
-        }catch(err){
-            message.reply(err)
+        }else{
+            const pigLatin = new PigLatin()
+            try{
+                const translated = pigLatin.translate(args.join(' '))
+                var ping = message.createdTimestamp - Date.now();
+                message.channel.send(translated).then(a=>{
+                    a.edit(translated.toString()+"\n``Time taken to translate: "+ping.toString()+" MS` `")
+                });
+                bot.piglatincache.set(message.content.toString(),translated.toString())
+            }catch(err){
+                message.reply(err)
+            }
         }
     }
 };

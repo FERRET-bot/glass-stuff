@@ -9,6 +9,18 @@ module.exports = {
         var os = require('os');
         var sysinfo = {};
 
+        function arrayAverage(arr){
+            //Find the sum
+            var sum = 0;
+            for(var i in arr) {
+                sum += arr[i];
+            }
+            //Get the length of the array
+            var numbersCnt = arr.length;
+            //Return the average / mean.
+            return (sum / numbersCnt);
+        }
+
         sysinfo.hostname = os.hostname();
         sysinfo.os = {};
         sysinfo.os.release          = os.release();
@@ -22,20 +34,27 @@ module.exports = {
         var cache = channels.cache
         var getter = cache.get("841008670125064223")
         await getter.send(msg);
+        var tp1 = undefined;
+        var tp2 = undefined;
         async function testping(iterations){
+            var pingss = []
             for(var control = 0;control<iterations;control++){
                 var base = Date.now();
                 var fm = await getter.send("Ping msg...");
-                var tm = fm.createdTimestamp - base;
-                console.log(tm);
+                var tm = base - fm.createdTimestamp;
+                pingss.push(tm)
                 await fm.delete();
             }
+            return pingss;
+            console.log(pingss)
         }
-        setTimeout(() => {
-            testping(8);
+        setTimeout(async () => {
+            tp1 = await testping(8);
         }, 1000);
-        await setTimeout(() => {
-            testping(8);
+        await setTimeout(async () => {
+            tp2 = await testping(8);
+            console.log("average ping time #1: "+Math.abs(arrayAverage(tp1)).toString());
+            console.log("average ping time #2: "+Math.abs(arrayAverage(tp2)).toString());
             config.loaded = true;
         }, 1000);
 	},
