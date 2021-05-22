@@ -24,7 +24,10 @@ app.post('/git', (req, res) => {
         if (data) console.log(data);
         if (err) console.log(err);
       });
-      cmd.run('refresh');  // Refresh project
+    setTimeout(()=>{
+      cmd.run('refresh');
+    },7000)
+        // Refresh project
 
       console.log("> [GIT] Updated with origin/master");
   }

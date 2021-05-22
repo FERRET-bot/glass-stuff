@@ -1,3 +1,1 @@
-git pull origin main
-
-git reset --hard
+git pull origin HEAD:main
