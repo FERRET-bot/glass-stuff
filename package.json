@@ -16,6 +16,7 @@
     "canvas-constructor": "^4.1.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
+    "express": "^4.17.1",
     "giphy-api": "^2.0.1",
     "mongodb": "^3.6.6",
     "pig-latinizer": "^1.0.6"
