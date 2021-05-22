@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "giphy-api": "^2.0.1",
     "mongodb": "^3.6.6",
+    "node-cmd": "^4.0.0",
     "pig-latinizer": "^1.0.6"
   }
 }
