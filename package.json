@@ -9,19 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@octokit/core": "^3.4.0",
-    "aalib.js": "^2.0.0",
     "asciify-image": "^0.1.6",
-    "canvas": "^2.7.0",
     "canvas-constructor": "^4.1.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
-    "faunadb": "^4.2.0",
-    "ffmpeg-static": "^4.3.0",
     "giphy-api": "^2.0.1",
     "mongodb": "^3.6.6",
-    "mysql": "^2.18.1",
-    "opusscript": "0.0.8",
     "pig-latinizer": "^1.0.6"
   }
 }
