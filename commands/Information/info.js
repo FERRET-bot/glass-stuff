@@ -5,7 +5,7 @@ module.exports = {
     name: "info",
     desc: "Shows info about the bot.",
     usage: "",
-    aliases: ['!info'],
+    aliases: ['info'],
     cooldown: 5,
     execute: async (message, args, bot, config) => {
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
