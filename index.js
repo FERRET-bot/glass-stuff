@@ -19,6 +19,7 @@ const cmd = require("node-cmd");
 app.post('/git', (req, res) => {
   // If event is "push"
   if (req.headers['x-github-event'] == "push") { 
+      config.loaded = false;
       cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updating */
       cmd.get('./git.sh', (err, data) => {  // Run our script
         if (data) console.log(data);
@@ -38,6 +39,7 @@ app.post('/git', (req, res) => {
 app.listen(3000, () => {
   console.log("Example app listening at http://localhost:${port}")
 })
+
   
 const fs = require('fs');
 
