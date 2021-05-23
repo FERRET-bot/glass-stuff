@@ -4,6 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'clear',
       description: "clear a set number of messages",
       usage: "<number>",
+      cooldown: 5,
       aliases: ['purge'],
       async execute(message, args, bot, config){
           
