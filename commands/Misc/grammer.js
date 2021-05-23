@@ -10,10 +10,9 @@ module.exports = {
         grammerembed.setColor('#FFA500')
         grammerembed.setTitle('check your grammer you litle carrot')
         grammerembed.setDescription('you beter change you grammer before i spenk you')
-        grammerembed.setImage('https://cdn.discordapp.com/attachments/838500668696166471/838704894340628530/ferret_god.jpg');
+        grammerembed.setImage('https://polecat.me/ferrets/ab8vzj27jgq11.jpg');
 
         
         message.channel.send(grammerembed)
     }
-
 };
