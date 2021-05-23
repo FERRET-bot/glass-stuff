@@ -21,7 +21,7 @@ module.exports = {
         })
         .catch(function (error) {
           console.log(error)
-          message.channel.send("An error has occured whilst trying to retreive a random ferret.")
+          message.channel.send("An error has occured whilst trying to retreive a random ferret!.")
         });
     
     }
