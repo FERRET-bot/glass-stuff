@@ -10,9 +10,9 @@ module.exports = {
         if(!args || !args[0]) return message.reply("Please specify text to send!");
         var txt = args.join(" ");
         var split = txt.split("")
-        var endstring = "||"
+        var endstring = ""
         split.forEach(current=>{
-            endstring = endstring+""+current.toString()+"||"
+            endstring = endstring+"||"+current.toString()+"||"
         })
         message.channel.send(`\`\`${endstring}\`\``)
     }
