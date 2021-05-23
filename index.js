@@ -18,8 +18,7 @@ var app = express();
 const cmd = require("node-cmd");
 app.post('/git', (req, res) => {
   // If event is "push"
-  if (req.headers['x-github-event'] == "push") { 
-      config.loaded = false;
+  if (req.headers['x-github-event'] == "push") {
       cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updating */
       cmd.get('./git.sh', (err, data) => {  // Run our script
         if (data) console.log(data);
@@ -106,7 +105,6 @@ bot.on("message", async (message) => { // client or bot
     })
     if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
-    if (!config.loaded) return message.reply("The bot is loading, please wait until completion. Try again later!")
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {

@@ -7,7 +7,6 @@ module.exports = {
     cooldown: 10,
     aliases: ["commands"],
     execute: async (message, args, bot, config) => {
-      message.channel.send("My prefixes are \""+config.prefixes+"\"")
       var ncomands = [];
       let embed = new Discord.MessageEmbed();
       embed.setTimestamp().setFooter(`Ferret`, bot.user.avatarURL)
@@ -46,7 +45,7 @@ module.exports = {
           cate.forEach((file) => {
             const command = require(__dirname + `/../${folder}/${file}`);
             let usage = `\`${config.prefixes[0]}${command.name} ${command.usage}\``
-            if (command.name == args[0].toLowerCase()) {
+            if (command.name == args[0].toLowerCase() || command.aliases && command.aliases.has(args[0].toLowerCase())) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())
               hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\nAliases: \``+command.aliases+`\``)
