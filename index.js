@@ -119,8 +119,12 @@ bot.on("message", async (message) => { // client or bot
             if (message.content.startsWith(prfx)) pref = prfx;
         })
     }else{
-        servprefs[message.guild.id.toString()].prefixes.forEach(prfx=>{
-            if (message.content.startsWith(prfx)) pref = prfx;
+        servprefs.servers.forEach(s=>{
+            if (s.serverid === message.guild.id){
+                s.prefixes.forEach(prfx=>{
+                    if(message.content.startsWith(prfx)) pref = prfx;
+                })
+            }
         })
     }
     if (!pref) return;
