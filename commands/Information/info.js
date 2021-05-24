@@ -20,7 +20,7 @@ module.exports = {
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
       info.addField('------------------------------------------', "")
-      info.addField('update log', config.updatelog)
+ //     info.addField('update log', config.updatelog)
 
     message.channel.send(info)
     }}
