@@ -19,7 +19,7 @@ module.exports = {
       info.addField('prefixes', "``"+config.prefixes+"``")
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
-      info.addField('------------------------------------------', "")
+  //    info.addField('------------------------------------------', "")
  //     info.addField('update log', config.updatelog)
 
     message.channel.send(info)
