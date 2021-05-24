@@ -39,10 +39,7 @@ app.post('/git', (req, res) => {
         if (data) console.log(data);
         if (err) console.log(err);
       });
-    setTimeout(()=>{
-      cmd.run('refresh');
-    },7000)
-        // Refresh project
+      cmd.run('refresh');  // Refresh project
 
       console.log("> [GIT] Updated with origin/master");
   }
@@ -112,7 +109,6 @@ bot.on("message", async (message) => { // client or bot
     if (message.author.bot && results == false) return;
     if (!results == true) return;
     var pref = undefined;
-    var servprefs = require('./servPrefs.json')
     var def = undefined;
     servprefs.servers.forEach(s=>{
         if(s.serverid === message.guild.id.toString()) def = true;
@@ -122,13 +118,7 @@ bot.on("message", async (message) => { // client or bot
             if (message.content.startsWith(prfx)) pref = prfx;
         })
     }else{
-        servprefs.servers.forEach(s=>{
-            if (s.serverid === message.guild.id){
-                s.prefixes.forEach(prfx=>{
-                    if(message.content.startsWith(prfx)) pref = prfx;
-                })
-            }
-        })
+        
     }
     if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
