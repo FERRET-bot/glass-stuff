@@ -6,6 +6,21 @@ var client = new Discord.Client();
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const fs = require("fs")
+
+function jsonReader(filePath, cb) {
+    fs.readFile(filePath, (err, fileData) => {
+        if (err) {
+            return cb && cb(err)
+        }
+        try {
+            const object = JSON.parse(fileData)
+            return cb && cb(null, object)
+        } catch(err) {
+            return cb && cb(err)
+        }
+    })
+}
 
 var bot = client;
 bot.commands = new Discord.Collection();
@@ -18,8 +33,7 @@ var app = express();
 const cmd = require("node-cmd");
 app.post('/git', (req, res) => {
   // If event is "push"
-  if (req.headers['x-github-event'] == "push") { 
-      config.loaded = false;
+  if (req.headers['x-github-event'] == "push") {
       cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updating */
       cmd.get('./git.sh', (err, data) => {  // Run our script
         if (data) console.log(data);
@@ -36,9 +50,6 @@ app.post('/git', (req, res) => {
 app.listen(3000, () => {
   console.log("Example app listening at http://localhost:${port}")
 })
-
-  
-const fs = require('fs');
 
 function checker(value) {
     var prohibited = ['banana', 'apple'];
@@ -98,12 +109,26 @@ bot.on("message", async (message) => { // client or bot
     if (message.author.bot && results == false) return;
     if (!results == true) return;
     var pref = undefined;
-    config.prefixes.forEach(prfx=>{
-        if (message.content.startsWith(prfx)) pref = prfx;
+    var servprefs = require('./servPrefs.json')
+    var def = undefined;
+    servprefs.servers.forEach(s=>{
+        if(s.serverid === message.guild.id.toString()) def = true;
     })
+    if (!def){
+        config.prefixes.forEach(prfx=>{
+            if (message.content.startsWith(prfx)) pref = prfx;
+        })
+    }else{
+        servprefs.servers.forEach(s=>{
+            if (s.serverid === message.guild.id){
+                s.prefixes.forEach(prfx=>{
+                    if(message.content.startsWith(prfx)) pref = prfx;
+                })
+            }
+        })
+    }
     if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
-    if (!config.loaded) return message.reply("The bot is loading, please wait until completion. Try again later!")
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {
