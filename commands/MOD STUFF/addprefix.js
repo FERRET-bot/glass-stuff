@@ -24,7 +24,7 @@ module.exports = {
         if (message.guild.ownerID !== message.author.id && !config.devs.includes(message.author.id.toString())) return message.channel.send(`You must be the owner of this server to use this command.`);
         if (!servprefs.servers[message.guild.id.toString()]){
             fs.readFile('../../servPrefs.json', function (err, returned) {
-                returned = json.parse(returned);
+                returned = JSON.parse(returned);
                 if (err) {
                     console.log('Error reading file:',err)
                     return
@@ -39,7 +39,7 @@ module.exports = {
             })
         }else{
             fs.readFile('../../servPrefs.json', function (err, returned) {
-                returned = json.parse(returned);
+                returned = JSON.parse(returned);
                 if (err) {
                     console.log('Error reading file:',err)
                     return
