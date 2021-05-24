@@ -110,7 +110,7 @@ bot.on("message", async (message) => { // client or bot
     if (!results == true) return;
     var pref = undefined;
     var servprefs = require('./servPrefs.json')
-    if(!servprefs[message.guild.id.toString()]){
+    if(!servprefs.get(message.guild.id.toString())){
         config.prefixes.forEach(prfx=>{
             if (message.content.startsWith(prfx)) pref = prfx;
         })

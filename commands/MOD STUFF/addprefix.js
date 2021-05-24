@@ -22,7 +22,7 @@ module.exports = {
     async execute(message, args, bot, config){
         var servprefs = require("../../servPrefs.json");
         if (message.guild.ownerID !== message.author.id && !config.devs.includes(message.author.id.toString())) return message.channel.send(`You must be the owner of this server to use this command.`);
-        if (!servprefs.servers[message.guild.id.toString()]){
+        if (!servprefs.servers.get(message.guild.id.toString())){
             fs.readFile('./servPrefs.json', function (err, returned) {
                 returned = JSON.parse(returned);
                 if (err) {
