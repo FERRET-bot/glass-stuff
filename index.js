@@ -6,6 +6,21 @@ var client = new Discord.Client();
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const fs = require("fs")
+
+function jsonReader(filePath, cb) {
+    fs.readFile(filePath, (err, fileData) => {
+        if (err) {
+            return cb && cb(err)
+        }
+        try {
+            const object = JSON.parse(fileData)
+            return cb && cb(null, object)
+        } catch(err) {
+            return cb && cb(err)
+        }
+    })
+}
 
 var bot = client;
 bot.commands = new Discord.Collection();
@@ -38,9 +53,6 @@ app.post('/git', (req, res) => {
 app.listen(3000, () => {
   console.log("Example app listening at http://localhost:${port}")
 })
-
-  
-const fs = require('fs');
 
 function checker(value) {
     var prohibited = ['banana', 'apple'];
@@ -100,9 +112,16 @@ bot.on("message", async (message) => { // client or bot
     if (message.author.bot && results == false) return;
     if (!results == true) return;
     var pref = undefined;
-    config.prefixes.forEach(prfx=>{
-        if (message.content.startsWith(prfx)) pref = prfx;
-    })
+    var servprefs = require('./servPrefs.json')
+    if(!servprefs[message.guild.id.toString()]){
+        config.prefixes.forEach(prfx=>{
+            if (message.content.startsWith(prfx)) pref = prfx;
+        })
+    }else{
+        servprefs[message.guild.id.toString()].prefixes.forEach(prfx=>{
+            if (message.content.startsWith(prfx)) pref = prfx;
+        })
+    }
     if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
     if (cmd) {
