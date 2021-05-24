@@ -18,6 +18,7 @@
   ],
 
 
+  "updatelog": "added update log to the info command",
   
   "cmdformat": "const Discord = require('discord.js'); // used for message embeds, etc\n\n  module.exports = {\n      name: 'CommandName',\n      description: \"What to display on the help page\",\n      usage: \"<required arg> [optional arg]\",\n      cooldown: 5,\n      aliases: [\"cmd\",\"a\"],\n      async execute(message, args, bot, config){\n          \n      }\n };"
 }
