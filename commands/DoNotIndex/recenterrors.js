@@ -23,6 +23,8 @@ module.exports = {
             }
         })
         pastebin // base
-        .createPaste(st,Date.now().toString())
+        .createPaste(st,Date.now().toString()).then(data=>{
+            message.author.send("https://pastebin.com/raw/"+data.toString())
+        })
     }
 };
