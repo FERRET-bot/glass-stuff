@@ -17,7 +17,7 @@ module.exports = {
         bot.recenterrors.each(err=>{
             counter = counter + 1;
             if(counter >= 100){
-                break;
+                throw BreakException;
             }else{
                 st = st + err.toString() + "\n\n"
             }
