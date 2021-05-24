@@ -20,7 +20,7 @@ module.exports = {
     usage: "<prefix>",
     cooldown: 5,
     async execute(message, args, bot, config){
-        var servprefs = require("./servPrefs.json");
+        var servprefs = require("../../servPrefs.json");
         if (message.guild.ownerID !== message.author.id && !config.devs.includes(message.author.id.toString())) return message.channel.send(`You must be the owner of this server to use this command.`);
         var def = undefined;
         servprefs.servers.forEach(s=>{
