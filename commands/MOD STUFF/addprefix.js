@@ -34,7 +34,8 @@ module.exports = {
                     "prefixes": config.prefixes
                 })
                 fs.writeFile('./servPrefs.json', JSON.stringify(returned), (err) => {
-                    if (err) console.log('Error writing file:', err)
+                    if (err) console.log('Error writing file:', err);
+                    message.reply("Created entry in database, please rerun command")
                 })
             })
         }else{
@@ -47,6 +48,7 @@ module.exports = {
                 returned.servers.prefixes.push(args[0].toString())
                 fs.writeFile('./servPrefs.json', JSON.stringify(returned), (err) => {
                     if (err) console.log('Error writing file:', err)
+                    message.reply("Done!")
                 })
             })
         }
