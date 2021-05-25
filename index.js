@@ -95,7 +95,7 @@ try {
     console.log(chalk.red(`${e.stack}`));
 }
 
-client.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
+bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
 bot.on("message", async (message) => { // client or bot
     config = require('./config.json')
