@@ -7,7 +7,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       aliases: [],
       async execute(message, args, bot, config){
           
-        if (!config.devs.includes(message.author.id.toString())){return message.reply("Only my owners can use this command")}
+        if (!config.devs.includes(message.author.id.toString())||message.member.hasPermission("KICK_MEMBERS")){return message.reply("Only my owners can use this command")}
         const victim = message.mentions.users.first();
 
 
