@@ -13,7 +13,7 @@ module.exports = {
             target = message.author
         }
         else{
-            if (message.member.hasPermission("MANAGE_NICKNAMES")||!config.devs.includes(message.author.id.toString())){
+            if (message.member.hasPermission("MANAGE_NICKNAMES")||config.devs.includes(message.author.id.toString())){
                 target = message.mentions.users.first()
                 args.shift()
                 }
