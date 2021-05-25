@@ -17,10 +17,6 @@ const Discord = require('discord.js'); // used for message embeds, etc
         message.guild.member(victim).ban().then(promise =>{
           message.channel.send(`${victim} has been banned from the server`)
         }).catch(err=>{message.reply(err)})
-
-         
-    
-    
     
     
     }
