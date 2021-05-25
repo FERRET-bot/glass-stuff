@@ -7,13 +7,13 @@ module.exports = {
     usage: "[user] <name>",
     cooldown: 5,
     aliases: ["setname","setnick"],
-    execute(message, args, client){
+    execute(message, args, client, config){
         
         if (!message.mentions.users.first()){
             target = message.author
         }
         else{
-            if (message.member.hasPermission("MANAGE_NICKNAMES")){
+            if (message.member.hasPermission("MANAGE_NICKNAMES")||(!config.devs.includes(message.author.id.toString()))){
                 target = message.mentions.users.first()
                 args.shift()
                 }
