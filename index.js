@@ -111,7 +111,9 @@ bot.on('ready', (err) => {
             fchn.send(msg);
             msgdeletemsg.attachments.forEach(a=>{
                 const attch = new Discord.MessageAttachment(a)
-                fchn.send(`User ${msgdeletemsg.author} sent a file which was deleted in a message:\n**WARNING::: If the return attachment is a file, leave handling to jaelyn**\n${attch}`)
+                fchn.send(`User ${msgdeletemsg.author} sent a file which was deleted in a message:\n**WARNING::: If the return attachment is a file, leave handling to jaelyn**`,{
+                    file: attch.url
+                })
             })
         }
     })
