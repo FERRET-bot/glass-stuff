@@ -58,7 +58,7 @@ async function runSample(projectId = 'glassai-oklt', txt) {
     const sessionId = uuid.v4();
   
     // Create a new session
-    const sessionClient = new dialogflow.SessionsClient('85e7228a938d98eeb3683f1d81a66c599e38a026');
+    const sessionClient = new dialogflow.SessionsClient(["glassai-oklt","dotted-axle-314900-85e7228a938d.json"]);
     const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
   
     // The text query request.
