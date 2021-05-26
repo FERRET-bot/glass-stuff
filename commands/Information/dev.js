@@ -11,8 +11,8 @@ module.exports = {
 
     fs.readFile('reports.json', function (err, data) {
       var json = JSON.parse(data)
-      json.push(created.toString())
-      json[created.toString()].push({
+      data.push(created.toString())
+      data[created.toString()].push({
         name: `report`,
         createdby: `${message.author.id}`,
         data: `${args.join(" ")}`,
