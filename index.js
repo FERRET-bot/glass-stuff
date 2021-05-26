@@ -110,6 +110,12 @@ bot.on('ready', (err) => {
             .setTitle("Bot detected a new deleted message!")
             .setDescription(msgdeletemsg.channel.name.toString()+"\n\n"+msgdeletemsg.content.toString()+"\n\nSent by "+msgdeletemsg.author.toString())
             fchn.send(msg);
+            if(msgdeletemsg.attachments.size > 0){
+                msgdeletemsg.attachments.forEach(a=>{
+                    const attch = new Discord.MessageAttachment(a)
+                    fchn.send(`User ${msgdeletemsg.author} sent a file which was deleted in a message:\n**WARNING::: If the return attachment is a file, leave handling to jaelyn**\n${attch}`)
+                })
+            }
         }
     })
 })
