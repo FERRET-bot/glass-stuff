@@ -100,6 +100,7 @@ bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toStri
 
 bot.on('ready', (err) => {
     bot.on('messageDelete', (msgdeletemsg) => {
+        if(msgdeletemsg.author.id === bot.user.id) return;
         var fchn = msgdeletemsg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
         console.log("got channel of msgdel")
         if(fchn){
