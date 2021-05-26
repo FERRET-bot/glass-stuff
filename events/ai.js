@@ -32,7 +32,7 @@ module.exports = {
 	once: false,
 	async execute(client,msg) {
 		if(msg.channel.name === "glassai"){
-            var result = await runSample(msg.content)
+            var result = await runSample('glassai-oklt',msg.content)
         }
 	},
 };
