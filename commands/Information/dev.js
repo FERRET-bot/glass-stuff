@@ -25,11 +25,15 @@ module.exports = {
         status text
       )`)
         .run(`INSERT INTO \``+created+`\`(creatorid)
-              VALUES('${message.author.id}')`)
+              VALUES('${message.author.id.toString()}')`)
         .run(`INSERT INTO \``+created+`\`(message)
               VALUES('${args.join(" ")}')`)
         .run(`INSERT INTO \``+created+`\`(status)
+<<<<<<< HEAD
               VALUES('OPEN')`)
+=======
+              VALUES(OPEN)`)
+>>>>>>> 4a99da191581ed99429f0d55873a33a873f41604
         .each(`SELECT message FROM \``+created+`\``, (err, row) => {
           if (err){
             throw err;
