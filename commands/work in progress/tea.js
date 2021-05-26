@@ -10,7 +10,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
         let teaembed = new Discord.Messageembe
 
         function random(things) {
-          return things[Math.floor(Math.random() * colors.length)];
+          return things[Math.floor(Math.random() * things.length)];
        }
 
         var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
