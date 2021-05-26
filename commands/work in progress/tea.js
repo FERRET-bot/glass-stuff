@@ -22,7 +22,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
        
        
         teaembed.settitle(`how to make a cup of tea`)
-        teaembed.setdescription(`first add ${one} into tha cup\n\n then add ${two} to the cup\n\n after stir for around 5 seconds\n\n when you have finnished stiring add ${three}, the content may look weird but trust the proces\n\n whemn you are done with all that finnaly add ${four}\n\n\n and there you go\n a nice cup of whatever that thing is \n\n :)`)
+     //   teaembed.setdescription(`first add ${one} into tha cup\n\n then add ${two} to the cup\n\n after stir for around 5 seconds\n\n when you have finnished stiring add ${three}, the content may look weird but trust the proces\n\n whemn you are done with all that finnaly add ${four}\n\n\n and there you go\n a nice cup of whatever that thing is \n\n :)`)
         teaembed.setColor('RANDOM')
         
 
