@@ -101,6 +101,7 @@ bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toStri
 bot.once('ready', (err) => function (){
     bot.on('messageDelete', (msg) => {
         var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
+        console.log("got channel of msgdel")
         if(fchn){
             const dt = new Date();
             const msg = new Discord.MessageEmbed()
