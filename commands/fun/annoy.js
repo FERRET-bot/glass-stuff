@@ -14,6 +14,8 @@ module.exports = {
         split.forEach(current=>{
             endstring = endstring+"||"+current.toString()+"||"
         })
+        var buffer = undefined;
+        if(endstring.length >= 1018) return message.channel.send(new Discord.MessageAttachment(Buffer.from(str, 'utf-8'), Date.now().toString()))
         message.channel.send(`\`\`${endstring}\`\``)
     }
 };
