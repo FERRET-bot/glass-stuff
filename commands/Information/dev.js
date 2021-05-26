@@ -36,6 +36,7 @@ module.exports = {
           })  
       });
     });
+    db.close();
 
     const asker = message.author
     const username = message.author.username
