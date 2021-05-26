@@ -110,8 +110,8 @@ bot.on('ready', (err) => {
             .setDescription(msgdeletemsg.channel.name.toString()+"\n\n"+msgdeletemsg.content.toString()+"\n\nSent by "+msgdeletemsg.author.toString())
             fchn.send(msg);
             msgdeletemsg.attachments.forEach(a=>{
-                fchn.send(`User ${msgdeletemsg.author} sent a file which was deleted in a message:\n**WARNING::: If the return attachment is a file, leave handling to jaelyn**`,{
-                    file: a
+                fchn.send(`User ${msgdeletemsg.author} sent a file which was deleted in a message:\n\*\*WARNING::: If the return attachment is a file, leave handling to jaelyn\*\*`).then(mssss=>{
+                    fchn.send(a)
                 })
             })
         }
