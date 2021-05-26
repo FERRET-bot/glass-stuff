@@ -19,4 +19,4 @@ you did not get all of the correct node modules installed:
 
 #### Status
 Not Released
-If you somehow can access this repo and you are not a developer, please DM the main owner, Ferret!
+If you somehow can access this repo and you are not a developer, please DM the main owner, Ferret!!
