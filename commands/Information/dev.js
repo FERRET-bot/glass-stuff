@@ -24,11 +24,11 @@ module.exports = {
         message text NOT NULL,
         status text NOT NULL
       )`)
-        .run(`INSERT INTO `+created+`(creatorid)
+        .run(`INSERT INTO \``+created+`\`(creatorid)
               VALUES('${message.author.id}')`)
-        .run(`INSERT INTO `+created+`(message)
+        .run(`INSERT INTO \``+created+`\`(message)
               VALUES('${args.join(" ")}')`)
-        .run(`INSERT INTO `+created+`(status)
+        .run(`INSERT INTO \``+created+`\`(status)
               VALUES('OPEN')`)
         .each(`SELECT message FROM `+created+``, (err, row) => {
           if (err){
