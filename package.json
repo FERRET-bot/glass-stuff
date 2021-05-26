@@ -21,6 +21,7 @@
     "mongodb": "^3.6.6",
     "node-cmd": "^4.0.0",
     "pig-latinizer": "^1.0.6",
-    "pastebin-js": "^1.0.6"
+    "pastebin-js": "^1.0.6",
+    "@google-cloud/dialogflow": "3.5.0"
   }
 }
