@@ -50,7 +50,7 @@ return res.sendStatus(200); // Send back OK status
 });
 
 app.listen(3000, () => {
-console.log("Example app listening at http://localhost:${port}")
+    console.log("Example app listening at http://localhost:${port}")
 })
 
 function checker(value) {
@@ -98,16 +98,18 @@ try {
 
 bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
-bot.on('messageDelete', (msg) => {
-    var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
-    if(fchn){
-        const dt = new Date();
-        const msg = new Discord.MessageEmbed()
-        .setColor([219, 29, 73])
-        .setTitle("Bot detected a new deleted message!")
-        .setDescription(msg.content)
-        fchn.send(msg);
-    }
+bot.once('ready', (err) => {
+    bot.on('messageDelete', (msg) => {
+        var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
+        if(fchn){
+            const dt = new Date();
+            const msg = new Discord.MessageEmbed()
+            .setColor([219, 29, 73])
+            .setTitle("Bot detected a new deleted message!")
+            .setDescription(msg.content)
+            fchn.send(msg);
+        }
+    })
 })
 bot.on("message", async (message) => { // client or bot
     config = require('./config.json')
