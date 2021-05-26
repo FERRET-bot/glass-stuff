@@ -7,13 +7,17 @@ const Discord = require('discord.js'); // used for message embeds, etc
       cooldown: 100,
       aliases: [],
       async execute(message, args, bot, config){
-        let teaembed = new Discord.Messageembed
+        let teaembed = new Discord.Messageembe
+
+        function random(things) {
+          return things[Math.floor(Math.random() * colors.length)];
+       }
 
         var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
-        var one =  Math.floor(thingstoadd.length * Math.random())
-        var two =  Math.floor(thingstoadd.length * Math.random())
-        var three =  Math.floor(thingstoadd.length * Math.random())
-        var four =  Math.floor(thingstoadd.length * Math.random())
+        var one = random(thingstoadd)
+        var two = random(thingstoadd)
+        var three = random(thingstoadd)
+        var four = random(thingstoadd)
        
        
        
