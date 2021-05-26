@@ -32,10 +32,11 @@ module.exports = {
               VALUES("open")`)
         .all(`SELECT * FROM \``+created+`\``, function(err, rows) {  
           rows.forEach(function (row) {  
-              console.log(row.col1, row.col2, row.col3);    // and other columns, if desired
+              console.log(row);    // and other columns, if desired
           })  
       });
     });
+    db.close();
 
     const asker = message.author
     const username = message.author.username
