@@ -108,7 +108,7 @@ bot.on('ready', (err) => {
             const msg = new Discord.MessageEmbed()
             .setColor([219, 29, 73])
             .setTitle("Bot detected a new deleted message!")
-            .setDescription(msgdeletemsg.content)
+            .setDescription(msgdeletemsg.channel.name.toString()+"\n\n"+msgdeletemsg.content.toString()+"\n\nSent by "+msgdeletemsg.author.toString())
             fchn.send(msg);
         }
     })
