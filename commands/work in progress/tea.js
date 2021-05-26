@@ -8,12 +8,13 @@ const Discord = require('discord.js'); // used for message embeds, etc
       aliases: [],
       async execute(message, args, bot, config){
         let teaembed = new Discord.Messageembe
+        var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
 
         function random(things) {
           return things[Math.floor(Math.random() * things.length)];
        }
 
-        var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
+
         var one = random(thingstoadd)
         var two = random(thingstoadd)
         var three = random(thingstoadd)
