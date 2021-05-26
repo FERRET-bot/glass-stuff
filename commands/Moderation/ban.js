@@ -4,7 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'ban',
       description: "ban someone from the server",
       usage: "<name>",
-      aliases: [],
+      aliases: ["ban"],
       async execute(message, args, bot, config){
         var passthru = false;
         if(config.devs.includes(message.author.id.toString())) passthru = true
