@@ -52,6 +52,7 @@ app.listen(3000, () => {
 console.log("Example app listening at http://localhost:${port}")
 })
 const dialogflow = require('@google-cloud/dialogflow');
+const dlflw = new dialogflow();
 const uuid = require('uuid');
 async function runSample(projectId = 'glassai-oklt', txt) {
     // A unique identifier for the given session
