@@ -51,6 +51,40 @@ return res.sendStatus(200); // Send back OK status
 app.listen(3000, () => {
 console.log("Example app listening at http://localhost:${port}")
 })
+const dialogflow = require('@google-cloud/dialogflow');
+const uuid = require('uuid');
+async function runSample(projectId = 'glassai-oklt', txt) {
+    // A unique identifier for the given session
+    const sessionId = uuid.v4();
+  
+    // Create a new session
+    const sessionClient = new dialogflow.SessionsClient();
+    const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
+  
+    // The text query request.
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          // The query to send to the dialogflow agent
+          text: txt.toString(),
+          // The language used by the client (en-US)
+          languageCode: 'en-US',
+        },
+      },
+    };
+  
+    // Send request and log result
+    const responses = await sessionClient.detectIntent(request);
+    const result = responses[0].queryResult;
+    return result.fulfillmentText
+}
+bot.on("message", async (message) =>{
+    if(message.channel.name === "glassai"){
+        var ress = await runSample('glassai-oklt',message.content)
+        message.channel.send(ress)
+    }
+})
 
 function checker(value) {
     var prohibited = ['banana', 'apple'];
