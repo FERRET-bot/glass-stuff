@@ -98,7 +98,7 @@ try {
 
 bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
-bot.once('ready', (err) => function (){
+bot.on('ready', (err) => {
     bot.on('messageDelete', (msg) => {
         var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
         console.log("got channel of msgdel")
