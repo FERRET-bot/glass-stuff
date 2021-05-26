@@ -98,10 +98,6 @@ try {
 
 bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
-<<<<<<< HEAD
-bot.once('ready' )
-
-=======
 bot.once('ready', (err) => function (){
     bot.on('messageDelete', (msg) => {
         var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
@@ -115,7 +111,6 @@ bot.once('ready', (err) => function (){
         }
     })
 })
->>>>>>> cc9ae5b844626052052432ee95bbe78c7cbf397d
 bot.on("message", async (message) => { // client or bot
     config = require('./config.json')
     if (message.channel.type == "dm") return;
