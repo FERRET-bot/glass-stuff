@@ -6,12 +6,14 @@ const Discord = require('discord.js'); // used for message embeds, etc
       usage: "<name>",
       aliases: [],
       async execute(message, args, bot, config){
-          
-        if (!config.devs.includes(message.author.id.toString())||message.member.hasPermission("KICK_MEMBERS")){return message.reply("Only my owners can use this command")}
+
+        var passthru = false;
+        if(config.devs.includes(message.author.id.toString())) passthru = true
+        if(message.member.hasPermission("BAN_MEMBERS")) passthru = true
+        
+
+        if(!passthru) return
         const victim = message.mentions.users.first();
-
-
-
         message.guild.member(victim).kick().then(promise =>{
           message.channel.send(`${victim} has been kicked from the server`)
       })
