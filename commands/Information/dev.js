@@ -19,18 +19,18 @@ module.exports = {
 
     db.serialize(() => {
       // Queries scheduled here will be serialized.
-      db.run(`CREATE TABLE ${created.toString()}(
+      db.run(`CREATE TABLE `+created+`(
         creatorid text NOT NULL,
         message text NOT NULL,
         status text NOT NULL
       )`)
-        .run(`INSERT INTO ${created}(creatorid)
+        .run(`INSERT INTO `+created+`(creatorid)
               VALUES('${message.author.id}')`)
-        .run(`INSERT INTO ${created}(message)
+        .run(`INSERT INTO `+created+`(message)
               VALUES('${args.join(" ")}')`)
-        .run(`INSERT INTO ${created}(status)
+        .run(`INSERT INTO `+created+`(status)
               VALUES('OPEN')`)
-        .each(`SELECT message FROM ${created}`, (err, row) => {
+        .each(`SELECT message FROM `+created+``, (err, row) => {
           if (err){
             throw err;
           }
