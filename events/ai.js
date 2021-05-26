@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
 async function runSample(projectId = 'glassai-oklt', txt) {
     // A unique identifier for the given session
