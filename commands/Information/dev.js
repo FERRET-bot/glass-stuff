@@ -1,4 +1,5 @@
 const Discord = require('discord.js'); // used for message embeds, etc
+const sqlite3 = require('sqlite3').verbose();
 
 module.exports = {
   name: 'dev',
@@ -9,18 +10,34 @@ module.exports = {
     var created = bot.uuid.v4();
     var fs = require('fs')
 
-    fs.readFile('reports.json', function (err, data) {
-      var json = JSON.parse(data)
-      data.push(created.toString())
-      data[created.toString()].push({
-        name: `report`,
-        createdby: `${message.author.id}`,
-        data: `${args.join(" ")}`,
-        status: `Open`
-      })
+    let db = new sqlite3.Database('reports.db',sqlite3.OPEN_READWRITE, (err) => {
+      if (err) {
+        console.error(err.message);
+      }
+      console.log('Connected to the reports database.');
+    });
 
-      fs.writeFile("reports.json", JSON.stringify(json))
-    })
+    db.serialize(() => {
+      // Queries scheduled here will be serialized.
+      db.run(`CREATE TABLE [IF NOT EXISTS] ${created.toString()}(
+        creatorid text,
+        message text,
+        status text
+      )`)
+        .run(`INSERT INTO ${created}(creatorid)
+              VALUES('${message.author.id}')`)
+        .run(`INSERT INTO ${created}(message)
+              VALUES('${args.join(" ")}')`)
+        .run(`INSERT INTO ${created}(status)
+              VALUES('OPEN')`)
+        .each(`SELECT message FROM ${created}`, (err, row) => {
+          if (err){
+            throw err;
+          }
+          console.log(row.message);
+        });
+    });
+
     const asker = message.author
     const username = message.author.username
     var nowtime_t = Date.now();
