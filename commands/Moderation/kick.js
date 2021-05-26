@@ -4,6 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'kick',
       description: "kick someone from the server",
       usage: "<name>",
+      cooldown: 10,
       aliases: ["kick"],
       async execute(message, args, bot, config){
 
