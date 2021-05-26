@@ -99,15 +99,15 @@ try {
 bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
 bot.on('ready', (err) => {
-    bot.on('messageDelete', (msg) => {
-        var fchn = msg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
+    bot.on('messageDelete', (msgdeletemsg) => {
+        var fchn = msgdeletemsg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
         console.log("got channel of msgdel")
         if(fchn){
             const dt = new Date();
             const msg = new Discord.MessageEmbed()
             .setColor([219, 29, 73])
             .setTitle("Bot detected a new deleted message!")
-            .setDescription(msg.content)
+            .setDescription(msgdeletemsg.content)
             fchn.send(msg);
         }
     })
