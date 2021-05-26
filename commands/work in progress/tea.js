@@ -10,15 +10,14 @@ const Discord = require('discord.js'); // used for message embeds, etc
         let teaembed = new Discord.Messageembe
         var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
 
-        function random(things) {
-          return things[Math.floor(Math.random() * things.length)];
-       }
+        Array.prototype.random = function () {
+          return this[Math.floor((Math.random()*this.length))];
+        }
 
-
-        var one = random(thingstoadd)
-        var two = random(thingstoadd)
-        var three = random(thingstoadd)
-        var four = random(thingstoadd)
+        var one = thingstoadd.random()
+        var two = thingstoadd.random()
+        var three = thingstoadd.random()
+        var four = thingstoadd.random()
        
        
        
