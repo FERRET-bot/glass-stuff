@@ -29,7 +29,7 @@ module.exports = {
         .run(`INSERT INTO \``+created+`\`(message)
               VALUES('${args.join(" ")}')`)
         .run(`INSERT INTO \``+created+`\`(status)
-              VALUES(OPEN)`)
+              VALUES(\`OPEN\`)`)
         .each(`SELECT message FROM \``+created+`\``, (err, row) => {
           if (err){
             throw err;
