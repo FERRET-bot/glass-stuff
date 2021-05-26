@@ -30,12 +30,11 @@ module.exports = {
               VALUES('${args.join(" ")}')`)
         .run(`INSERT INTO \``+created+`\`(status)
               VALUES("open")`)
-        .each(`SELECT * FROM \``+created+`\``, (err, row) => {
-          if (err){
-            throw err;
-          }
-          console.log(row.message);
-        });
+        .all(`SELECT * FROM \``+created+`\``, function(err, rows) {  
+          rows.forEach(function (row) {  
+              console.log(row.col1, row.col2, row.col3);    // and other columns, if desired
+          })  
+      });
     });
 
     const asker = message.author
