@@ -20,9 +20,9 @@ module.exports = {
     db.serialize(() => {
       // Queries scheduled here will be serialized.
       db.run(`CREATE TABLE '`+created+`'(
-        creatorid TEXT PRIMARY NOT NULL,
-        message TEXT NOT NULL,
-        status TEXT NOT NULL
+        creatorid text NOT NULL,
+        message text NOT NULL,
+        status text NOT NULL
       )`)
         .run(`INSERT INTO \``+created+`\`(creatorid)
               VALUES("${message.author.id.toString()}")`)
