@@ -15,7 +15,7 @@ module.exports = {
         });
         let sql = `SELECT uuid id,
                             Status status
-                    FROM *
+                    FROM `+args[0]+`
                     WHERE uuid  = ?`;
         let playlistId = args[0];
 
