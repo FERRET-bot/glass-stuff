@@ -19,7 +19,7 @@ module.exports = {
 
     db.serialize(() => {
       // Queries scheduled here will be serialized.
-      db.run(`CREATE TABLE `+created+`(
+      db.run(`CREATE TABLE '`+created+`'(
         creatorid text NOT NULL,
         message text NOT NULL,
         status text NOT NULL
