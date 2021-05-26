@@ -7,7 +7,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       cooldown: 100,
       aliases: [],
       async execute(message, args, bot, config){
-        let teaembed = new Discord.Messageembe
+        const teaembed = new Discord.Messageembe
         var thingstoadd = ["milk", "suger", "cold water", "hot water", "lava water", "a tea bag", "ice"]
 
         Array.prototype.random = function () {
