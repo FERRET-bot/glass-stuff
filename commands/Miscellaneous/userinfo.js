@@ -7,10 +7,11 @@ const Discord = require('discord.js'); // used for message embeds, etc
       cooldown: 5,
       aliases: [],
       async execute(message, args, bot, config){
+          var member = ''
 
         if (!message.mentions.users.first()){
             member = message.author
-            
+
         }else{member = message.mentions.user.first()
 
       const embed = new MessageEmbed()
