@@ -42,3 +42,5 @@ const Discord = require('discord.js'); // used for message embeds, etc
   message.channel.send(embed);
 }
 }};
+
+message.channel.send(embed)
