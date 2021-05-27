@@ -1,11 +1,11 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
 module.exports = {
-    name: 'annoy',
-    description: "Turn all characters into spoilers (may make your friends hate you)",
+    name: 'block',
+    description: "Turn all characters into a block",
     usage: "<text>",
     cooldown: 7,
-    aliases: ["spoilers"],
+    aliases: [],
     async execute(message, args, bot, config){
         if(!args || !args[0]) return message.reply("Please specify text to send!");
         var txt = args.join(" ");
