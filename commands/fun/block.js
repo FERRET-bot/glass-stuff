@@ -12,7 +12,7 @@ module.exports = {
         var split = txt.split("")
         var endstring = ""
         split.forEach(current=>{
-            endstring = endstring+":regional_indicator_"+current.toString()+":"
+            endstring = endstring+":regional_indicator_"+current.toString()+": "
         })
         if(endstring.length >= 1018) return message.channel.send(new Discord.MessageAttachment(Buffer.from(endstring, 'utf-8'), Date.now().toString()))
         message.channel.send(`\`\`${endstring}\`\``)
