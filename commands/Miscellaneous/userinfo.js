@@ -8,6 +8,11 @@ const Discord = require('discord.js'); // used for message embeds, etc
       aliases: [],
       async execute(message, args, bot, config){
 
+        if (!message.mentions.users.first()){
+            member = message.author
+            
+        }else{member = message.mentions.user.first()
+
       const embed = new MessageEmbed()
       .setTitle(`${member.displayName}'s Info`)
       .setThumbnail(member.user.displayAvatarURL({
@@ -35,4 +40,4 @@ const Discord = require('discord.js'); // used for message embeds, etc
   if (userFlags.length > 0) embed.addField('Badges', userFlags.map(flag => flags[flag]).join('\n'));
   message.channel.send(embed);
 }
-};
+}};
