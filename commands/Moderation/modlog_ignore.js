@@ -4,7 +4,7 @@ const fs = require('fs')
 module.exports = {
     name: 'modlogignore',
     description: "Set a channel to be ignored by the global modlog",
-    usage: "<channel ID>",
+    usage: "<channel id>",
     cooldown: 15,
     async execute(message, args, bot, config){
         if(!message.member.guild.me.hasPermission('ADMINISTRATOR')) return message.reply("You do not have the sufficient perms, ``Administrator``, to perform this task.")
