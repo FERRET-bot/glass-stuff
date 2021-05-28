@@ -12,7 +12,7 @@ module.exports = {
         if(!bot.channels.cache.get(args[0])) return message.reply("This channel does not exist.")
         fs.readFile("./modlog_ignore.txt", function (err, data) {
             if (err) message.reply("An error occured!");
-            if(data.indexOf(message.channel.id.toString()) >= 0){
+            if(data.toString().indexOf(message.channel.id.toString()) >= 0){
                 return message.reply("This channel ID already exists in the modlog ignore textfile!")
             }
             fs.appendFile('./modlog_ignore.txt', args[0].toString()+"\n", function (err) {
