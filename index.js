@@ -103,7 +103,7 @@ bot.on('ready', (err) => {
     bot.on('messageDelete', (msgdeletemsg) => {
         fs.readFile("./modlog_ignore.txt", function (err, data) {
             if (err) throw err;
-            if(data.indexOf(msgdeletemsg.channel.id.toString()) >= 0){
+            if(data.indexOf(msgdeletemsg.channel.id) >= 0){
                 return;
             }
         });
