@@ -10,7 +10,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
           client.user.setActivity(message.shift(), {
             type: "WATCHING",
-          });
+          }).then(message.channel.send(`the status has been changed`))
 
 
       }
