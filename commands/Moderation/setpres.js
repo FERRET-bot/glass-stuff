@@ -6,9 +6,9 @@ const Discord = require('discord.js'); // used for message embeds, etc
       usage: "<activity>",
       aliases: ["pre"],
       cooldown: 15,
-      async execute(message, args, bot, config){
+      async execute(message, args, client, config){
 
-          bot.user.setActivity(message.shift(), {
+          client.user.setActivity(message.shift(), {
             type: "WATCHING",
           });
 
