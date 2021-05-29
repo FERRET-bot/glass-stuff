@@ -1,5 +1,5 @@
 {
-  "version": "1.0.38",
+  "version": "1.2.0",
   "prefixes": ["!","?"],
   "token": "ODM5MTExMDM5MTc3MDY0NDU5.YJE5DQ.K9-vvd0vBAPzFZQiBWIC3LQ9t6Q",
   "defaultcooldown": 1,
@@ -8,6 +8,8 @@
   
   "giphykey": "j1sSwm5qs0wove3fEx4igjbhTvb3g6gn",
   "pastekey": "wOyO75DDUZbRrND2dXjILRHSONqiiJKR",
+  "oxfID": "78aca4e2",
+  "oxfKEY": "eea23c8621b80e2e1b085aa742414369",
   
   "devs": [
 	"795003099642462218",
