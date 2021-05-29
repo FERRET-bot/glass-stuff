@@ -18,8 +18,8 @@ module.exports = {
         var url = `https://od-api.oxforddictionaries.com/api/v2/${firstendpoint}/${languagecode}/${args[0]}`
         fetch(url, {method: 'GET', headers: {"app_id": config.oxfID, "app_key": config.oxfKEY}}).then(res=>{
             res = res.json();
-            console.log(res)
-            url = `https://od-api.oxforddictionaries.com/api/v2/${secondendpoint}/${languagecode}/${res}`
+            console.log(res.text)
+            url = `https://od-api.oxforddictionaries.com/api/v2/${secondendpoint}/${languagecode}/${res.text}`
             fetch(url, {method: 'GET', headers: {"app_id": config.oxfID, "app_key": config.oxfKEY}}).then(res2=>{
                 res2 = res2.json();
                 console.log(res2)
