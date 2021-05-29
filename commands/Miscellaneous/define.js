@@ -23,7 +23,7 @@ module.exports = {
             fetch(url, {method: 'GET', headers: {"app_id": config.oxfID, "app_key": config.oxfKEY}}).then(res2=>{
                 res2 = res2.json();
                 console.log(res2)
-                var mbed = new Discord.MessageEmbed
+                var mbed = new Discord.MessageEmbed()
                 .setTitle(res)
                 .setDescription(res2.text)
                 message.channel.send(mbed)
