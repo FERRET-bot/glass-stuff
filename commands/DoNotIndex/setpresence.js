@@ -1,8 +1,8 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
-      name: 'status',
-      description: `sets the status of the bot (seperate the type and activity with a /)  \n the type of activity will always be ${config.type}`,
+      name: 'presence',
+      description: `sets the presence of the bot (seperate the type and activity with a /)  \n the type of activity will always be ${config.type}`,
       usage: "<activity>",
       cooldown: 15,
       async execute(message, args, bot, config){
