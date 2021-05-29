@@ -2,7 +2,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
       name: 'presence',
-      description: `sets the presence of the bot(thw type will be ${config.type})`,
+      description: `sets the presence of the bot(thw type will be PLAYING)`,
       usage: "<activity>",
       aliases: ["status"],
       cooldown: 15,
@@ -11,7 +11,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
 
           bot.user.setActivity(status, {
-            type: config.type,
+            type: "PLAYING",
           });
 
 
