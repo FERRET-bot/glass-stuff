@@ -4,7 +4,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
       name: 'presence',
       description: `sets the presence of the bot(thw type will be PLAYING)`,
       usage: "<activity>",
-      aliases: ["status"],
+      aliases: ["pre"],
       cooldown: 15,
       async execute(message, args, bot, config){
           var status = message.shift()
