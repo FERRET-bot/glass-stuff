@@ -98,8 +98,15 @@ try {
 
 bot.on("error", (err) => { bot.recenterrors.set(Date.now().toString(),err.toString()) });
 
+
 bot.on('ready', (err) => {
     bot.on('messageDelete', (msgdeletemsg) => {
+        fs.readFile("./modlog_ignore.txt", function (err, data) {
+            if (err) throw err;
+            if(data.toString().match(msgdeletemsg.channel.id.toString())){
+                return;
+            }
+        });
         if(msgdeletemsg.author.id === bot.user.id) return;
         var fchn = msgdeletemsg.guild.channels.cache.find(channel => channel.name.toLowerCase() === 'glass-logs');
         if(fchn){
