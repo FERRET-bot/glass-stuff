@@ -10,7 +10,7 @@ module.exports = {
     async execute(message, args, bot, config){
         if(!args || !args[0]) return message.reply("invalid form")
         if(args[1]) return message.reply("can only process one definition at a time")
-        fetch("https://www.dictionaryapi.com/api/v3/references/collegiate/json/"+args[0]+"?key=79f8bbe7-4088-4a17-83c4-22fc1dede66e").then(meta=>{
+        fetch("https://www.dictionaryapi.com/api/v3/references/collegiate/json/"+args[0]+"?key=79f8bbe7-4088-4a17-83c4-22fc1dede66e").then(res => res.json()).then(meta=>{
             meta = JSON.stringify(meta)
             var mdb = new Discord.MessageEmbed()
             .setTitle(meta['hwi']['hw'].replace("*","-"))
