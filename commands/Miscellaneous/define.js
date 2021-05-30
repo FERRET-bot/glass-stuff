@@ -2,8 +2,8 @@ const Discord = require('discord.js'); // used for message embeds, etc
 var Dictionary = require("oxford-dictionary");
   
 var config = {
-  app_id : config.oxfID,
-  app_key : config.oxfKEY,
+  app_id : "78aca4e2",
+  app_key : "eea23c8621b80e2e1b085aa742414369",
   source_lang : "en-us"
 };
 
