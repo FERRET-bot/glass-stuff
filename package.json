@@ -24,6 +24,6 @@
     "pastebin-js": "^1.0.6",
     "sqlite3": "^5.0.2",
     "oxford-dictionary": "^1.6.0",
-    "https://products.wolframalpha.com/api/libraries/javascript/wolfram-alpha-api-1.0.0-rc.1.tgz": "^1.0.0"
+    "wolfram-alpha-api": "^0.2.1"
   }
 }
