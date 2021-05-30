@@ -22,7 +22,7 @@ module.exports = {
             resp = JSON.parse(resp.toJson());
             console.log(resp.pod)
             console.log()
-            console.log(resp.pod[0])
+            console.log(resp.pod[0].supbod)
             var embd = new Discord.MessageEmbed()
             .setDescription(resp.pod.plaintext)
             .setImage(resp.pod.subpod.img[0].src)
