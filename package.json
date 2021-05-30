@@ -22,6 +22,7 @@
     "node-cmd": "^4.0.0",
     "pig-latinizer": "^1.0.6",
     "pastebin-js": "^1.0.6",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "oxford-dictionary": "^1.6.0"
   }
 }

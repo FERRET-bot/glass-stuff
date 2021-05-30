@@ -1,9 +1,13 @@
 const Discord = require('discord.js'); // used for message embeds, etc
-const fetch = require('node-fetch')
-const firstendpoint = "lemmas";
-const secondendpoint = "entries"
-const languagecode = "en-us"
+var Dictionary = require("oxford-dictionary");
+  
+var config = {
+  app_id : config.oxfID,
+  app_key : config.oxfKEY,
+  source_lang : "en-us"
+};
 
+var dict = new Dictionary(config);
 
 
 module.exports = {
@@ -15,19 +19,22 @@ module.exports = {
     async execute(message, args, bot, config){
         if(!args || !args[0]) return message.reply("invalid form")
         if(args[1]) return message.reply("can only process one definition at a time")
-        var url = `https://od-api.oxforddictionaries.com/api/v2/${firstendpoint}/${languagecode}/${args[0]}`
-        fetch(url, {method: 'GET', headers: {"app_id": config.oxfID, "app_key": config.oxfKEY}}).then(res=>{
-            res = res.json();
-            console.log(res.text)
-            url = `https://od-api.oxforddictionaries.com/api/v2/${secondendpoint}/${languagecode}/${res.text}`
-            fetch(url, {method: 'GET', headers: {"app_id": config.oxfID, "app_key": config.oxfKEY}}).then(res2=>{
-                res2 = res2.json();
-                console.log(res2)
-                var mbed = new Discord.MessageEmbed()
-                .setTitle(res)
-                .setDescription(res2.text)
-                message.channel.send(mbed)
+        var lookup = dict.find(args[0].toString());
+ 
+        lookup.then(function(res) {
+            // stringify JSON object to see full structure in console log
+            res = JSON.stringify(res,null,4)
+            var tops = "PLACEHOLDER"
+            res.results.lexicalEntries.entries.senses.definitions.forEach(e=>{
+                tops = tops + ", "+e.toString()
             })
-        })
+            var mb = new Discord.MessageEmbed()
+            .setTitle(args[0])
+            .setDescription(`${tops}\n\n${res.results.lexicalEntries.entries.senses.examples}`)
+            message.channel.send(mb)
+        },
+        function(err) {
+            message.reply("Sorry but an error has occured.")
+        });
     }
 };
