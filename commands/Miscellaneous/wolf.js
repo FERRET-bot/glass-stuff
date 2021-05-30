@@ -5,23 +5,22 @@ var waClient = new wajs(waAppId)
 
 
 module.exports = {
-    name: 'wolfram',
+    name: 'express',
     description: "Use WOLFRAM||ALPHA",
-    usage: "<word(s)>",
+    usage: "<expression>",
     cooldown: 5,
     aliases: ["define"],
     async execute(message, args, bot, config){
         if(!args || !args[0]) return message.reply("invalid form")
         var queryString = args.join(" ")
         var queryOptions = {
-            format: 'image,plaintext',
+            format: 'image',
             units: 'metric'
         }
         waClient.query(queryString, queryOptions)
         .then(function(resp) {
             resp = JSON.parse(resp.toJson());
             var embd = new Discord.MessageEmbed()
-            .setDescription(resp.pod[0].subpod[0].plaintext)
             .setImage(resp.pod[0].subpod[0].img[0].src)
             message.channel.send(embd);
         })
