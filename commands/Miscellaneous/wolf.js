@@ -21,7 +21,7 @@ module.exports = {
         .then(function(resp) {
             resp = JSON.parse(resp.toJson());
             var embd = new Discord.MessageEmbed()
-            .setDescription(responce.pod[0].subpod[0].plaintext)
+            .setDescription(resp.pod[0].subpod[0].plaintext)
             .setImage(resp.pod[0].subpod[0].img[0].src)
             message.channel.send(embd);
         })
