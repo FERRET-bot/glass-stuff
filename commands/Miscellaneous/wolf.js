@@ -19,6 +19,7 @@ module.exports = {
         }
         waClient.query(queryString, queryOptions)
         .then(function(resp) {
+            resp = resp.toJson();
             console.log(resp)
         })
         .catch(function(err) {
