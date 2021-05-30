@@ -20,7 +20,9 @@ module.exports = {
         waClient.query(queryString, queryOptions)
         .then(function(resp) {
             resp = resp.toJson();
-            console.log(resp)
+            var embd = new Discord.MessageEmbed()
+            .setDescription(resp.pod.plaintext)
+            .setImage(resp.pod.img.src)
         })
         .catch(function(err) {
             message.reply("There was an error fetching your query:\n"+err.toString())
