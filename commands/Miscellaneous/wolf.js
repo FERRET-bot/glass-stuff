@@ -20,9 +20,11 @@ module.exports = {
         waClient.query(queryString, queryOptions)
         .then(function(resp) {
             resp = JSON.parse(resp.toJson());
+            console.log(resp.pod)
+            console.log(resp.pod.subpod)
             var embd = new Discord.MessageEmbed()
-            .setDescription(resp.pod[0].plaintext)
-            .setImage(resp.pod[0].subpod.img[0].src)
+            .setDescription(resp.pod.plaintext)
+            .setImage(resp.pod.subpod.img[0].src)
             message.channel.send(embd);
         })
         .catch(function(err) {
