@@ -21,7 +21,8 @@ module.exports = {
         .then(function(resp) {
             resp = JSON.parse(resp.toJson());
             console.log(resp.pod)
-            console.log(resp.pod.subpod)
+            console.log()
+            console.log(resp.pod[0])
             var embd = new Discord.MessageEmbed()
             .setDescription(resp.pod.plaintext)
             .setImage(resp.pod.subpod.img[0].src)
