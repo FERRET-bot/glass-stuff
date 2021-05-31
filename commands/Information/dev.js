@@ -32,7 +32,7 @@ module.exports = {
               VALUES("open")`)
         .all(`SELECT * FROM \``+created+`\``, function(err, rows) {  
           rows.forEach(function (row) {  
-              console.log(row);    // and other columns, if desired
+              console.log(row);    // and other columns, if desired!
           })  
       });
     });
