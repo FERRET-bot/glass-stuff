@@ -1,8 +1,8 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
 module.exports = {
-    name: 'block',
-    description: "Turn all characters into a block",
+    name: 'blockcopy',
+    description: "Turn all characters into text that, when copied, turns into blocks",
     usage: "<text>",
     cooldown: 7,
     aliases: [],
