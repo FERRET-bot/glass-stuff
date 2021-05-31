@@ -8,10 +8,6 @@ module.exports = {
     aliases: [],
     cooldown: 5,
     execute: async (message, args, bot, config) => {
-      var one = ""
-      var two = ""
-      one = message.guild.members.cache.get("830943413683617793")
-      two = message.guild.roles.cache.get("741954818058354750")
 
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
 
@@ -27,5 +23,4 @@ module.exports = {
  //     info.addField('------------------------------------------', "")
 
     message.channel.send(info)
-    one.roles.add(two)
     }}
