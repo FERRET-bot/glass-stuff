@@ -6,7 +6,7 @@ var waClient = new wajs(waAppId)
 
 module.exports = {
     name: 'express',
-    description: "Use WOLFRAM||ALPHA",
+    description: "Use WOLFRAM|ALPHA",
     usage: "<expression>",
     cooldown: 5,
     aliases: ["define"],
