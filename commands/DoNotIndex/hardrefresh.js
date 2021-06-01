@@ -2,7 +2,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
       name: 'hardrefresh',
-      description: "Externally refresh the bot - want to git pull? Add --g-pull to your args",
+      description: "Externally refresh the bot; want to git pull? Add --g-pull to your args",
       usage: "[options]",
       cooldown: 5,
       aliases: ["reset"],
