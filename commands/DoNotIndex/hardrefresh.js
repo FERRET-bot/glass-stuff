@@ -15,8 +15,9 @@ const Discord = require('discord.js'); // used for message embeds, etc
                         var do_gpull = false
                         if(message.content.toLowerCase().match("--g-pull")) do_gpull = true;
                         if(do_gpull){
-                            await message.channel.send("Git pulling...")
-                            cmd.run("git pull origin")
+                            message.channel.send("Git pulling...").then(m=>{
+                                cmd.run("git pull origin")
+                            })
                         }
                         cmd.run("refresh")
                         message.channel.send("Last message, refresh event has been sent.")
