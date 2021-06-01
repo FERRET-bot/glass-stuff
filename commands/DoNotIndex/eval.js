@@ -10,7 +10,7 @@ module.exports = {
   cooldown: 2,
   execute: async (message, args, client, config) => {
       var client=client
-      let auth = ["795003099642462218", "363011989099773954","498984530968051713"] // no one but these two IDs can use this command
+      let auth = config.devs
         if (!auth.includes(message.author.id)) {
         return message.channel.send(`Only my owners can use this command`);
     }
