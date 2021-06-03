@@ -25,7 +25,7 @@
     "sqlite3": "^5.0.2",
     "oxford-dictionary": "^1.6.0",
     "wajs": "^0.0.17",
-    "cheerio": "^0.0.0",
-    "puppeteer": "^0.0.0"
+    "cheerio": "^1.0.0-rc.9",
+    "puppeteer": "^10.0.0"
   }
 }
