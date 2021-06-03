@@ -3,6 +3,8 @@
 
 const Discord = require('discord.js');
 var client = new Discord.Client();
+client.uuid = require('uuid');
+client.authcodes = [];
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -24,7 +26,6 @@ function jsonReader(filePath, cb) {
 
 var bot = client;
 bot.commands = new Discord.Collection();
-bot.uuid = require('uuid');
 bot.cooldowns = new Discord.Collection();
 bot.notracebackmode = false
 bot.piglatincache = new Discord.Collection();
@@ -35,22 +36,22 @@ var app = express();
 const cmd = require("node-cmd");
 app.post('/git', (req, res) => {
 // If event is "push"
-if (req.headers['x-github-event'] == "push") {
-    cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updatin */
-    cmd.get('./git.sh', (err, data) => {  // Run our script
-        if (data) console.log(data);
-        if (err) console.log(err);
-    });
-    cmd.run('refresh');  // Refresh project
+    if (req.headers['x-github-event'] == "push") {
+        cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updatin */
+        cmd.get('./git.sh', (err, data) => {  // Run our script
+            if (data) console.log(data);
+            if (err) console.log(err);
+        });
+        cmd.run('refresh');  // Refresh project
 
-    console.log("> [GIT] Updated with origin/master");
-}
+        console.log("> [GIT] Updated with origin/master");
+    }
 
-return res.sendStatus(200); // Send back OK status
+    return res.sendStatus(200); // Send back OK status
 });
 
 app.listen(3000, () => {
-    console.log("Example app listening at http://localhost:${port}")
+    console.log(`Example app listening at http://localhost:${port}`)
 })
 
 function checker(value) {
