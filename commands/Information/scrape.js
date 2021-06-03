@@ -19,7 +19,7 @@ module.exports = {
             return message.reply(matchcase)
         })
         .catch(function(err){
-            return message.reply("Web page not found!")
+            return message.reply("Web page not found")
         });
     }
 };
