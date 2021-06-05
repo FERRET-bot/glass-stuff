@@ -50,9 +50,7 @@ app.post('/git', (req, res) => {
     return res.sendStatus(200); // Send back OK status
 });
 
-app.listen(3000, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(3000, () => {})
 
 function checker(value) {
     var prohibited = ['banana', 'apple'];
