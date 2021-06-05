@@ -142,8 +142,8 @@ bot.on("message", async (message) => { // client or bot
     if (!pref) return;
     var cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
     if(!cmd){
-        bot.commands.each(c=>{
-            c.aliases.forEach(al=>{
+        bot.commands.each(ccmd=>{
+            ccmd.aliases.forEach(al=>{
                 if(al == command.toLowerCase()) return cmd = c
             })
         })
