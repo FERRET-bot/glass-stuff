@@ -8,7 +8,12 @@ const Discord = require('discord.js'); // used for message embeds, etc
       aliases: ["newrole"],
       async execute(message, args, bot, config){
 
-        if (message.member.hasPermission("MANAGE_ROLES")){
+        var passthru = false;
+        if(config.devs.includes(message.author.id.toString())) passthru = true
+        if(message.member.hasPermission("MANAGE_ROLES")) passthru = true
+        
+
+        if(!passthru) return
 
             const arr = message.content.split('/');
 
@@ -26,5 +31,5 @@ message.guild.roles.create({
     message.channel.send('a new role has been created :^]')
 
           
-      }}
+      }
  };

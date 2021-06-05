@@ -139,7 +139,6 @@ bot.on("message", async (message) => { // client or bot
     }else{
 
     }
-    if (!pref) return;
     let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
     if (cmd) {
 
