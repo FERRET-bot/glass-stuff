@@ -144,7 +144,7 @@ bot.on("message", async (message) => { // client or bot
     if(!cmd){
         bot.commands.each(ccmd=>{
             ccmd.aliases.forEach(al=>{
-                if(al == command.toLowerCase()) return cmd = c
+                if(al == command.toLowerCase()) return cmd = ccmd
             })
         })
     }
