@@ -139,7 +139,15 @@ bot.on("message", async (message) => { // client or bot
     }else{
 
     }
-    let cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+    if (!pref) return;
+    var cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+    if(!cmd){
+        bot.commands.forEach(c=>{
+            c.aliases.forEach(al=>{
+                if(al == command.toLowerCase()) return cmd = c
+            })
+        })
+    }
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {
