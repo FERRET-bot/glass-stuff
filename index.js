@@ -4,7 +4,7 @@
 const Discord = require('discord.js');
 var client = new Discord.Client();
 client.uuid = require('uuid');
-client.authcodes = [];
+client.authcode = undefined;
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -49,6 +49,27 @@ app.post('/git', (req, res) => {
 
     return res.sendStatus(200); // Send back OK status
 });
+
+app.post('/api/v1', (req,res) =>{
+    if(req.headers['x-type'] === "messageSend"){
+        const apitoken = req.headers['x-authtoken'];
+        const channelid = req.headers['x-channelid'];
+        const mcontent = req.headers['x-messagecontent']
+        if (!apitoken){
+            return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+        }
+        if (apitoken !== bot.authcode){
+            return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+        }
+        if(!channelid || !mcontent){
+            return res.sendStatus(400); // client didnt send the required information, send four-zero-zero (400) (bad request) status code
+        }
+        if(mcontent.toString().length < 1 || mcontent.toString().length > 2000){
+            return res.sendStatus(400); // client sent bad information, send four-zero-zero (400) (bad request) status code
+        }
+        bot.guilds.cache.get(channelid.toString()).send(mcontent.toString())
+    }
+})
 
 app.listen(3000, () => {})
 
