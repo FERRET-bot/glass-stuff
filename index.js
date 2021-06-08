@@ -57,19 +57,15 @@ app.get('/api/v1', (req,res) =>{
         const channelid = req.headers['x-channelid'];
         const mcontent = req.headers['x-messagecontent']
         if (!apitoken){
-            res.send("No api token found")
             return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
         if (apitoken !== bot.authcode){
-            res.send("apitoken is wrong")
             return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
         if(!channelid || !mcontent){
-            res.send("no channel id or messagecontent fields")
             return res.sendStatus(400); // client didnt send the required information, send four-zero-zero (400) (bad request) status code
         }
         if(mcontent.toString().length < 1 || mcontent.toString().length > 2000){
-            res.send("too short or long")
             return res.sendStatus(400); // client sent bad information, send four-zero-zero (400) (bad request) status code
         }
         bot.guilds.cache.get(channelid.toString()).send(mcontent.toString())
