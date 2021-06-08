@@ -75,6 +75,7 @@ app.get('/api/v1', (req,res) =>{
             res.status(200).send(data);
         })
     }
+    return res.status(400).send({message: "400 BAD REQUEST; did you specify an x-type for the header?"})
 })
 
 app.listen(3000, () => {})
