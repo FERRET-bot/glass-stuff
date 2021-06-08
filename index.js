@@ -51,7 +51,7 @@ app.post('/git', (req, res) => {
     return res.sendStatus(200); // Send back OK status
 });
 
-app.post('/api/v1', (req,res) =>{
+app.get('/api/v1', (req,res) =>{
     if(req.headers['x-type'] === "messageSend"){
         const apitoken = req.headers['x-authtoken'];
         const channelid = req.headers['x-channelid'];
