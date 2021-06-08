@@ -3,6 +3,8 @@
 
 const Discord = require('discord.js');
 var client = new Discord.Client();
+client.disbut = require('discord-buttons');
+disbut(client);
 client.uuid = require('uuid');
 client.authcodes = function(){return JSON.parse(JSON.stringify(require("./authcodes.json")))}
 client.MongoClient = require('mongodb').MongoClient;
