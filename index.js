@@ -4,7 +4,7 @@
 const Discord = require('discord.js');
 var client = new Discord.Client();
 client.uuid = require('uuid');
-client.authcode = undefined;
+client.authcodes = function(){return JSON.parse(JSON.stringify(require("./authcodes.json")))}
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -59,7 +59,7 @@ app.get('/api/v1', (req,res) =>{
         if (!apitoken){
             return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
-        if (apitoken !== bot.authcode){
+        if (!bot.authcodes.keys.includes(apitoken.toString())){
             return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
         if(!channelid || !mcontent){
