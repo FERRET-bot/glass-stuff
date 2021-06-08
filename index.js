@@ -60,16 +60,20 @@ app.get('/api/v1', (req,res) =>{
             return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
         if (apitoken !== bot.authcode){
-            return res.sendStatus(402); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+            return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
         }
         if(!channelid || !mcontent){
-            return res.sendStatus(403); // client didnt send the required information, send four-zero-zero (400) (bad request) status code
+            return res.sendStatus(400); // client didnt send the required information, send four-zero-zero (400) (bad request) status code
         }
         if(mcontent.toString().length < 1 || mcontent.toString().length > 2000){
-            return res.sendStatus(404); // client sent bad information, send four-zero-zero (400) (bad request) status code
+            return res.sendStatus(400); // client sent bad information, send four-zero-zero (400) (bad request) status code
         }
-        bot.channels.cache.get(channelid.toString()).send(mcontent.toString())
-        return res.sendStatus(200)
+        bot.channels.cache.get(channelid.toString()).send(mcontent.toString()).then(m=>{
+            let data = {
+                message: '200 OK! Message id: '+m.id.toString()
+            };
+            res.status(200).send(data);
+        })
     }
 })
 
