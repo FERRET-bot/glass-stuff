@@ -68,7 +68,7 @@ app.get('/api/v1', (req,res) =>{
         if(mcontent.toString().length < 1 || mcontent.toString().length > 2000){
             return res.sendStatus(404); // client sent bad information, send four-zero-zero (400) (bad request) status code
         }
-        bot.guilds.cache.get(channelid.toString()).send(mcontent.toString())
+        bot.channels.cache.get(channelid.toString()).send(mcontent.toString())
         return res.sendStatus(200)
     }
 })
