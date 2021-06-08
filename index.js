@@ -34,10 +34,6 @@ var config = require('./config.json')
 var express = require('express')
 var app = express();
 const cmd = require("node-cmd");
-app.listen('/', (req,res) => {
-    res.send("unauthorized")
-    return res.sendStatus(401)
-})
 
 app.post('/git', (req, res) => {
 // If event is "push"
