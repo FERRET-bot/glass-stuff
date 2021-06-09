@@ -6,7 +6,7 @@ var client = new Discord.Client();
 client.disbut = require('discord-buttons');
 client.disbut(client);
 client.uuid = require('uuid');
-client.authcodes = []
+client.authcodes = [client.uuid.v4()];
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
