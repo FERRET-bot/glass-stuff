@@ -6,7 +6,7 @@ var client = new Discord.Client();
 client.disbut = require('discord-buttons');
 client.disbut(client);
 client.uuid = require('uuid');
-client.authcodes = function(){return JSON.parse(JSON.stringify(require("./authcodes.json")))}
+client.authcodes = []
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -53,31 +53,16 @@ app.post('/git', (req, res) => {
     return res.sendStatus(200); // Send back OK status
 });
 
-app.get('/api/v1', (req,res) =>{
-    if(req.headers['x-type'] === "messageSend"){
-        const apitoken = req.headers['x-authtoken'];
-        const channelid = req.headers['x-channelid'];
-        const mcontent = req.headers['x-messagecontent']
-        if (!apitoken){
-            return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-        }
-        if (!bot.authcodes.keys.includes(apitoken.toString())){
-            return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-        }
-        if(!channelid || !mcontent){
-            return res.sendStatus(400); // client didnt send the required information, send four-zero-zero (400) (bad request) status code
-        }
-        if(mcontent.toString().length < 1 || mcontent.toString().length > 2000){
-            return res.sendStatus(400); // client sent bad information, send four-zero-zero (400) (bad request) status code
-        }
-        bot.channels.cache.get(channelid.toString()).send(mcontent.toString()).then(m=>{
-            let data = {
-                message: '200 OK! Message id: '+m.id.toString()
-            };
-            res.status(200).send(data);
-        })
+app.post('/api/v1/ref', (req,res) =>{
+    const apitoken = req.headers['x-authtoken'];
+    if (!apitoken){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
     }
-    return res.status(400).send({message: "400 BAD REQUEST; did you specify an x-type for the header?"})
+    if (!bot.authcodes.includes(apitoken.toString())){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+    }
+    cmd.run('refresh')
+    res.sendStatus(200)
 })
 
 app.listen(3000, () => {})
