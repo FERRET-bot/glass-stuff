@@ -53,7 +53,11 @@ app.post('/git', (req, res) => {
     return res.sendStatus(200); // Send back OK status
 });
 
-app.post('/api/v1/ref', (req,res) =>{
+app.get('/api/v1/ref', function(req,res) {
+    res.send('!')
+})
+
+app.post('/api/v1/ref', function(req,res) {
     const apitoken = req.headers['x-authtoken'];
     if (!apitoken){
         return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
