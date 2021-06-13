@@ -24,6 +24,7 @@
     "pastebin-js": "^1.0.6",
     "sqlite3": "^5.0.2",
     "oxford-dictionary": "^1.6.0",
-    "wajs": "^0.0.17"
+    "wajs": "^0.0.17",
+    "discord-buttons": "^3.2.1"
   }
 }

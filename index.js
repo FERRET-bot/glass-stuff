@@ -3,8 +3,10 @@
 
 const Discord = require('discord.js');
 var client = new Discord.Client();
+client.disbut = require('discord-buttons');
+client.disbut(client);
 client.uuid = require('uuid');
-client.authcodes = [];
+client.authcodes = [client.uuid.v4()];
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -34,6 +36,7 @@ var config = require('./config.json')
 var express = require('express')
 var app = express();
 const cmd = require("node-cmd");
+
 app.post('/git', (req, res) => {
 // If event is "push"
     if (req.headers['x-github-event'] == "push") {
@@ -49,6 +52,22 @@ app.post('/git', (req, res) => {
 
     return res.sendStatus(200); // Send back OK status
 });
+
+app.get('/api/v1/ref', function(req,res) {
+    res.send('!')
+})
+
+app.post('/api/v1/ref', function(req,res) {
+    const apitoken = req.headers['x-authtoken'];
+    if (!apitoken){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+    }
+    if (!bot.authcodes.includes(apitoken.toString())){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+    }
+    cmd.run('refresh')
+    res.sendStatus(200)
+})
 
 app.listen(3000, () => {})
 
@@ -141,12 +160,6 @@ bot.on("message", async (message) => { // client or bot
     }
     if (!pref) return;
     var cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
-    if(!cmd){
-        bot.commands.each(ccmd=>{
-            var gotten = ccmd.aliases.get(command.toString().toLowerCase());
-            if(gotten) return cmd = ccmd
-        })
-    }
     if (cmd) {
 
         if (!bot.cooldowns.has(cmd.name.toString())) {
