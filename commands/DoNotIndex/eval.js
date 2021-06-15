@@ -6,7 +6,7 @@ module.exports = {
   name: "eval",
   desc: "Eval code or expression",
   usage: "<expression>",
-  aliases: ["run", "exec"],
+  aliases: ["exec"],
   cooldown: 2,
   execute: async (message, args, client, config) => {
       var client=client
