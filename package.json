@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js & node gitupdater.js"
+    "start": "concurrently --kill-others \"node index.js\" \"node gitupdater.js\""
   },
   "engines": {
     "node": "v12.x"
@@ -25,6 +25,7 @@
     "sqlite3": "^5.0.2",
     "oxford-dictionary": "^1.6.0",
     "wajs": "^0.0.17",
-    "discord-buttons": "^3.2.1"
+    "discord-buttons": "^3.2.1",
+    "concurrently": "^6.2.0"
   }
 }
