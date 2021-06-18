@@ -135,52 +135,56 @@ bot.on('ready', (err) => {
         }
     })
 })
-bot.on("message", async (message) => { // client or bot
-    config = require('./config.json')
-    if (message.channel.type == "dm") return;
-    if (bot.notracebackmode === true && message.author.id === bot.user.id){
-        setTimeout(() => {
-            message.delete();
-        }, config.notracebacktimeout);
-    }
-    const args = message.content.slice(1).split(/ +/);
-    const command = args.shift();
-    if (message.author.bot) return;
-    var results = checker(message.content.slice(1,1))
-    if (message.author.bot && results == false) return;
-    if (!results == true) return;
-    var pref = undefined;
-    var def = undefined;
-    if (!def){
-        config.prefixes.forEach(prfx=>{
-            if (message.content.startsWith(prfx)) pref = prfx;
-        })
-    }else{
-
-    }
-    if (!pref) return;
-    var cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
-    if (cmd) {
-
-        if (!bot.cooldowns.has(cmd.name.toString())) {
-            bot.cooldowns.set(cmd.name.toString(), new Discord.Collection());
+try{
+    bot.on("message", async (message) => { // client or bot
+        config = require('./config.json')
+        if (message.channel.type == "dm") return;
+        if (bot.notracebackmode === true && message.author.id === bot.user.id){
+            setTimeout(() => {
+                message.delete();
+            }, config.notracebacktimeout);
         }
+        const args = message.content.slice(1).split(/ +/);
+        const command = args.shift();
+        if (message.author.bot) return;
+        var results = checker(message.content.slice(1,1))
+        if (message.author.bot && results == false) return;
+        if (!results == true) return;
+        var pref = undefined;
+        var def = undefined;
+        if (!def){
+            config.prefixes.forEach(prfx=>{
+                if (message.content.startsWith(prfx)) pref = prfx;
+            })
+        }else{
 
-        const now = Date.now();
-        const timestamps = bot.cooldowns.get(cmd.name);
-        const cooldownAmount = (cmd.cooldown || config.defaultcooldown) * 1000;
+        }
+        if (!pref) return;
+        var cmd = bot.commands.get(command.toLowerCase() || bot.commands.find(cmcd => cmcd.aliases && cmcd.aliases.includes(command.toLowerCase())));
+        if (cmd) {
 
-        if (timestamps.has(message.author.id)) {
-            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-            if (now < expirationTime) {
-                const timeLeft = (expirationTime - now) / 1000;
-                return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+            if (!bot.cooldowns.has(cmd.name.toString())) {
+                bot.cooldowns.set(cmd.name.toString(), new Discord.Collection());
             }
+
+            const now = Date.now();
+            const timestamps = bot.cooldowns.get(cmd.name);
+            const cooldownAmount = (cmd.cooldown || config.defaultcooldown) * 1000;
+
+            if (timestamps.has(message.author.id)) {
+                const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+                if (now < expirationTime) {
+                    const timeLeft = (expirationTime - now) / 1000;
+                    return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${cmd.name}\` command.`);
+                }
+            }
+            cmd.execute(message, args, bot, config);
+            timestamps.set(message.author.id, now);
+            setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
         }
-        cmd.execute(message, args, bot, config);
-        timestamps.set(message.author.id, now);
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-    }
-});
+    });
+}catch(err){
+    console.log(err)
+}
 
 client.login(config.token)
