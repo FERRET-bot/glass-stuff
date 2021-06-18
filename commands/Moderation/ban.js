@@ -14,7 +14,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
         const victim = message.mentions.users.first();
 
         if(!passthru) return
-
+        if(victim.id == message.author.id) return message.reply("You can't ban yourself!")
         message.guild.member(victim).ban().then(promise =>{
           message.channel.send(`${victim} has been banned from the server`)
         }).catch(err=>{message.reply(err)})
