@@ -15,6 +15,8 @@ const Discord = require('discord.js'); // used for message embeds, etc
         
 
         if(!passthru) return
+
+        if(message.content.includes("/")){
         
             var content = args.slice().join("")
             const arr = content.split('/');
@@ -31,6 +33,12 @@ message.guild.roles.create({
     .catch(console.error);
 
     message.channel.send('a new role has been created :^]')
+  }else{
+
+    message.channel.send('please state a reason for this role')
+  
+  }
+
 
           
       }
