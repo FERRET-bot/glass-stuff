@@ -15,8 +15,9 @@ const Discord = require('discord.js'); // used for message embeds, etc
         
 
         if(!passthru) return
-
-            const arr = message.content.split('/');
+        
+            var content = message.content.slice(0).join(" ");
+            const arr = content.split('/');
 
 
          // Create a new role with data and a reason
