@@ -4,7 +4,7 @@ const execSync = require('child_process').execSync;
 
 module.exports = {
   name: "eval",
-  desc: "Eval code or expression",
+  ddescription: "Eval code or expression",
   usage: "<expression>",
   aliases: ["exec"],
   cooldown: 2,
