@@ -16,7 +16,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
         if(!passthru) return
         
-            var content = message.content.slice(1).join("")
+            var content = message.content.slice().join("")
             const arr = content.split('/');
 
 
