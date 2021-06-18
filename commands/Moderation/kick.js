@@ -11,6 +11,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
         var passthru = false;
         if(config.devs.includes(message.author.id.toString())) passthru = true
         if(message.member.hasPermission("KICK_MEMBERS")) passthru = true
+        if(!args || !args[0]) return message.reply("Arguments are required for this command")
         
 
         if(!passthru) return
