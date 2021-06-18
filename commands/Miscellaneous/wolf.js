@@ -9,7 +9,7 @@ module.exports = {
     description: "Use WOLFRAM|ALPHA",
     usage: "<expression>",
     cooldown: 5,
-    aliases: ["define"],
+    aliases: ["wolfram"],
     async execute(message, args, bot, config){
         if(!args || !args[0]) return message.reply("invalid form")
         var queryString = args.join(" ")
