@@ -11,6 +11,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
         var passthru = false;
         if(config.devs.includes(message.author.id.toString())) passthru = true
         if(message.member.hasPermission("MANAGE_ROLES")) passthru = true
+        if(!args || !args[0]) return message.reply("Arguments are required for this command")
         
 
         if(!passthru) return
@@ -21,10 +22,10 @@ const Discord = require('discord.js'); // used for message embeds, etc
          // Create a new role with data and a reason
 message.guild.roles.create({
     data: {
-      name: arr[1],
+      name: arr[0],
       color: "RANDOM",
     },
-    reason: arr[2],
+    reason: arr[1],
   })
     .catch(console.error);
 
