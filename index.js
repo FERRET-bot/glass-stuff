@@ -183,8 +183,8 @@ try{
             setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
         }
     });
-}catch(err){
-    console.log(err)
+}catch(errr){
+    console.log(errr)
 }
 
 client.login(config.token)
