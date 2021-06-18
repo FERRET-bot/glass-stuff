@@ -15,13 +15,10 @@ const Discord = require('discord.js'); // used for message embeds, etc
 
         if(!passthru) return
         const victim = message.mentions.users.first();
+        if(victim.id == message.author.id) return message.reply("You can't kick yourself!")
         message.guild.member(victim).kick().then(promise =>{
           message.channel.send(`${victim} has been kicked from the server`)
-      })
-    
-    
-    
-    
+        })
     
     }
  };
