@@ -45,7 +45,6 @@ app.post('/git', (req, res) => {
                 if (data) console.log(data);
                 if (err) console.log(err);
             });
-            cmd.run('refresh');  // Refresh project
     
             console.log("> [GIT] Updated with origin/master");
         }
@@ -54,7 +53,7 @@ app.post('/git', (req, res) => {
     });
 
 app.get('/api/v1/ref', function(req,res) {
-    res.send('!')
+    res.send('Use POST, not GET!')
 })
 
 app.post('/api/v1/ref', function(req,res) {
@@ -67,6 +66,38 @@ app.post('/api/v1/ref', function(req,res) {
     }
     cmd.run('refresh')
     res.sendStatus(200)
+})
+
+app.get('/api/v1/sendMessage', function(req,res) {
+    res.send('Use POST, not GET!')
+})
+
+app.post('/api/v1/sendMessage', function(req,res) {
+    const apitoken = req.headers['x-authtoken'];
+    const chan = req.headers['x-channelid']
+    const mcontent = req.headers['x-messagecontent']
+    if (!apitoken){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+    }
+    if (!bot.authcodes.includes(apitoken.toString())){
+        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
+    }
+    if (!chan || !mcontent){
+        return res.sendStatus(400);
+    }
+    if(!bot.channels.cache.get(chan.toString()) || mcontent.length > 2000){
+        return res.sendStatus(400);
+    }
+    try{
+        bot.channels.cache.get(chan.toString()).send(mcontent.toString()).then(m =>{
+            if(m){
+                return res.sendStatus(200);
+            }
+        })
+    }catch(err){
+        return res.sendStatus(500); // internal server err
+    }
+    return res.sendStatus(500);
 })
 
 app.listen(3000, () => {})
