@@ -72,7 +72,7 @@ app.get('/api/v1/sendMessage', function(req,res) {
     res.send('Use POST, not GET!')
 })
 
-app.post('/api/v1/sendMessage', function(req,res) {
+app.post('/api/v1/sendMessage', async function(req,res) {
     const apitoken = req.headers['x-authtoken'];
     const chan = req.headers['x-channelid']
     const mcontent = req.headers['x-messagecontent']
