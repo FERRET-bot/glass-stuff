@@ -90,7 +90,7 @@ app.post('/api/v1/sendMessage', async function(req,res) {
     }
     try{
         console.log(mcontent.toString());
-        m = await bot.channels.cache.get(chan.toString()).send(mcontent.toString().replace("\\n","\n"))
+        m = await bot.channels.cache.get(chan.toString()).send(mcontent.toString().replace("\\n","\n").replace("\\r","\r"))
         if(m) return res.sendStatus(200); else return res.sendStatus(500);
     }catch(err){
         return res.sendStatus(500); // internal server err
