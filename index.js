@@ -89,6 +89,7 @@ app.post('/api/v1/sendMessage', function(req,res) {
         return res.sendStatus(400);
     }
     try{
+        console.log(mcontent.toString());
         bot.channels.cache.get(chan.toString()).send(mcontent.toString()).then(m =>{
             if(m){
                 return res.sendStatus(200);
