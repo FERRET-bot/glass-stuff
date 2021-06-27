@@ -97,6 +97,13 @@ app.post('/api/v1/sendMessage', async function(req,res) {
     }
 })
 
+app.get('/api/v1/delay/:d', function(req,res) {
+    const delay = req.params.d || 20;
+    setTimeout(()=>{
+        res.send("Delayed at "+toString(delay*1000)+" second(s).")
+    },delay*1000)
+})
+
 app.listen(3000, () => {})
 
 function checker(value) {
