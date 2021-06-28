@@ -15,7 +15,7 @@ module.exports = {
             target = message.mentions.users.first()
         }
     
-        const attachment = new MessageAttachment('https://img.freepik.com/free-photo/cute-ferret-is-sleeping_369656-37.jpg?size=626&ext=jpg');
+        const attachment = new MessageAttachment('https://i.redd.it/lkgmfuj6tvr21.jpg');
        
         message.delete()
     message.channel.send(`${target}, please wake up or this is the last dream you'll ever see :)`, attachment)
