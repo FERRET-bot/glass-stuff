@@ -8,7 +8,7 @@ module.exports = {
     cooldown: 10,
     aliases: ["getkeys"],
     async execute(message, args, bot, config){
-        fs.readFile('../../../keys.txt', 'utf8', function(err, data) {
+        fs.readFile('/app/keys.txt', 'utf8', function(err, data) {
             if (err) throw err;
             var lines = data.split("\n")
             var ret = ""
