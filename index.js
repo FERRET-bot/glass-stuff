@@ -1,6 +1,7 @@
 // deriv from void_backup_05252020\index.js
 // command wrapper
 
+const fs = require("fs")
 const Discord = require('discord.js');
 var client = new Discord.Client();
 client.disbut = require('discord-buttons');
@@ -22,7 +23,6 @@ fs.readFile('/app/keys.txt', 'utf8', function(err, data) {
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const fs = require("fs")
 
 function jsonReader(filePath, cb) {
     fs.readFile(filePath, (err, fileData) => {
