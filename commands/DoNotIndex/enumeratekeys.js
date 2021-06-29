@@ -16,8 +16,9 @@ module.exports = {
                 splitLine = line.split(";")
                 id = splitLine[0]
                 key = splitLine[1]
-                ret = ret + `<@${id.toString()}> : ${key.toString()}`
+                ret = ret + `<@${id.toString()}> : ${key.toString()}\n`
             })
+            message.channel.send(ret)
         });
     }
  };
