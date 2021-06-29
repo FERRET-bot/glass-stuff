@@ -1,4 +1,5 @@
 const Discord = require('discord.js'); // used for message embeds, etc
+const fs = require("fs")
 
 module.exports = {
     name: 'mykey',
