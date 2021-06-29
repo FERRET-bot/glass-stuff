@@ -48,7 +48,12 @@ module.exports = {
             if (command.name == args[0].toLowerCase() || command.aliases && command.aliases.includes(args[0].toLowerCase())) {
               cmdnumb++;
               hembed.setAuthor(args[0].toLowerCase())
-              hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\nAliases: \``+command.aliases+`\``)
+              if(!command.aliases){
+                hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\n`)
+              }else{
+                hembed.addField("**Command:**", `Name: ${command.name}\nDescription: ${command.description}\nUsage: \`${usage}\`\nCooldown: \``+command.cooldown.toString()+`\`\nAliases: \`${command.aliases}\``)
+              }
+              
             }
           })
         })
