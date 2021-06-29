@@ -32,7 +32,7 @@ module.exports = {
         .setDescription("Started on "+dt.toString()+"\n``PRIVATE_INFO``|``"+sysinfo.os.release.toString()+"``|``"+sysinfo.os.platform.toString()+"``|``"+sysinfo.os.arch.toString()+"``")
         var channels = client.channels
         var cache = channels.cache
-        var getter = cache.get("841008670125064223")
+        var getter = cache.get("859498146252849164")
         await getter.send(msg);
         var tp1 = undefined;
         var tp2 = undefined;
