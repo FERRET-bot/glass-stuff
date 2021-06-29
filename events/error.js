@@ -9,7 +9,7 @@ module.exports = {
         .setDescription(errmsg.toString())
         var channels = client.channels
         var cache = channels.cache
-        var getter = cache.get("841008670125064223")
+        var getter = cache.get("859498146853814310")
         getter.send(msg)
 	},
 };
