@@ -7,6 +7,18 @@ client.disbut = require('discord-buttons');
 client.disbut(client);
 client.uuid = require('uuid');
 client.authcodes = [client.uuid.v4()];
+fs.readFile('/app/keys.txt', 'utf8', function(err, data) {
+    if (err) throw err;
+    var lines = data.split("\n")
+    var ret = ""
+    lines.forEach(line=>{
+        splitLine = line.split(";")
+        id = splitLine[0]
+        key = splitLine[1]
+        client.authcodes.push(key.toString())
+    })
+});
+
 client.MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
 client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
