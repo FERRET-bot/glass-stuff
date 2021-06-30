@@ -24,9 +24,9 @@ module.exports = {
       let help = new client.disbut.MessageButton()
       .setStyle('url')
       .setURL('https://discord.gg/U8ser55KqD') 
-      .setLabel('My First URL Button!');
+      .setLabel('join the support server!');
   
 
-    message.channel.send(info, help)
+    message.channel.send(info)
 
     }}
