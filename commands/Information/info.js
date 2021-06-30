@@ -20,12 +20,7 @@ module.exports = {
       info.addField('prefixes', "``"+config.prefixes+"``")
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
-    
-      let help = new client.disbut.MessageButton()
-      .setStyle('url')
-      .setURL('https://discord.gg/U8ser55KqD') 
-      .setLabel('join the support server!');
-  
+      
 
     message.channel.send(info)
 
