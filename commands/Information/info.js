@@ -23,9 +23,9 @@ module.exports = {
     
       let help = new client.disbut.MessageButton()
       help.setStyle('url')
-      help.setURL('https://discord.gg/U8ser55KqD') 
+      help.setURL(config.invite) 
       help.setLabel('join the support server!') 
 
-    message.channel.send(info, `need help?`, help)
+    message.channel.send(info, help)
 
     }}
