@@ -24,6 +24,6 @@ module.exports = {
       info.setfooter("join the support server!")
       
 
-    message.channel.send(info, "https://discord.gg/U8ser55KqD")
+    message.channel.send(info)
 
     }}
