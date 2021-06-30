@@ -21,11 +21,12 @@ module.exports = {
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
     
-  //    let help = new client.disbut.MessageButton()
-  //    help.setStyle('url')
-  //    help.setURL("https://discord.gg/U8ser55KqD") 
-  //    help.setLabel('join the support server!') 
+      let help = new client.disbut.MessageButton()
+      .setStyle('url')
+      .setURL('https://discord.gg/U8ser55KqD') 
+      .setLabel('My First URL Button!');
+  
 
-//    message.channel.send(info, help)
+    message.channel.send(info, help)
 
     }}
