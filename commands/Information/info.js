@@ -21,13 +21,11 @@ module.exports = {
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
     
-      let button = new client.disbut.MessageButton()
-      button.setStyle('url')
-      button.setURL('https://npmjs.com/discord-buttons') 
-      button.setLabel('My First URL Button!') 
-      button.setDisabled(); 
+      let help = new client.disbut.MessageButton()
+      help.setStyle('url')
+      help.setURL('https://discord.gg/U8ser55KqD') 
+      help.setLabel('join the support server!') 
 
-
-    message.channel.send(info, `need help?`, button)
+    message.channel.send(info, `need help?`, help)
 
     }}
