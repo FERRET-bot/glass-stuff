@@ -22,11 +22,11 @@ module.exports = {
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
 
       let button = new disbut.MessageButton()
-  .setStyle('url')
-  .setURL('https://discord.gg/U8ser55KqD') 
-  .setLabel('join the Support Server!') 
-  .setDisabled(); 
+      button.setStyle('url')
+      button.setURL('https://discord.gg/U8ser55KqD') 
+      button.setLabel('join the Support Server!') 
+      button.setDisabled(); 
 
-    message.channel.send('need help?', button);
     message.channel.send(info)
+    message.channel.send('need help?', button);
     }}
