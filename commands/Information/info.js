@@ -13,7 +13,7 @@ module.exports = {
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
 
       let info = new Discord.MessageEmbed
-      info.setTitle('the current info about the bot \n click to join the support server')
+      info.setTitle('the current info about the bot \nᶜˡᶦᶜᵏ ᵗᵒ ʲᵒᶦⁿ ᵗʰᵉ ˢᵘᵖᵖᵒʳᵗ ˢᵉʳᵛᵉʳ!')
       info.setThumbnail("https://www.bing.com/images/blob?bcid=RBE-Tm.CxroC5NvTZVNmjsTFKyOl.....88")
       info.setURL("https://discord.gg/U8ser55KqD")
       info.setColor('#28ff00')
