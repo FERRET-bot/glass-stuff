@@ -12,8 +12,6 @@ module.exports = {
 
       message.channel.send("My prefixes are \""+config.prefixes+"\"")
 
-
-
       let info = new Discord.MessageEmbed
       info.setTitle('the current info about the bot \n click to join the support server')
       info.setThumbnail("https://www.bing.com/images/blob?bcid=RBE-Tm.CxroC5NvTZVNmjsTFKyOl.....88")
@@ -26,6 +24,6 @@ module.exports = {
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
       
 
-    message.channel.send(help)
+    message.channel.send(info)
 
     }}
