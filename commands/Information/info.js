@@ -25,6 +25,6 @@ module.exports = {
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
       
 
-    message.channel.send(info,  "https://discord.gg/U8ser55KqD")
+    message.channel.send(info)
 
     }}
