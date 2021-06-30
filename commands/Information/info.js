@@ -22,11 +22,12 @@ module.exports = {
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
     
       let button = new client.disbut.MessageButton()
-      .setLabel("doubt")
-      .setStyle("green")
-      .setID("like_button")
+      button.setStyle('url')
+      button.setURL('https://npmjs.com/discord-buttons') 
+      button.setLabel('My First URL Button!') 
+      button.setDisabled(); 
 
 
-    message.channel.send(info)
-    message.channel.send('need help?', button);
+    message.channel.send(info, `need help?`, button)
+
     }}
