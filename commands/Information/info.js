@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 var fs = require('fs');
 const { version } = require('os');
+const help = require('./help');
 module.exports = {
     name: "info",
     desc: "Shows info about the bot.",
@@ -14,8 +15,9 @@ module.exports = {
 
 
       let info = new Discord.MessageEmbed
-      info.setTitle('the current info about the bot')
+      info.setTitle('the current info about the bot \n click to join the support server')
       info.setThumbnail("https://www.bing.com/images/blob?bcid=RBE-Tm.CxroC5NvTZVNmjsTFKyOl.....88")
+      info.setURL("https://discord.gg/U8ser55KqD")
       info.setColor('#28ff00')
       info.setDescription('the info seen below is the newest info about the bot \n\n update log,'+config.updatelog)
       info.addField('owners', "``"+config.devnames+"``")
@@ -23,12 +25,7 @@ module.exports = {
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
       
-    let help = new client.disbut.MessageButton()   
 
-    help.setStyle('url')
-    help.setURL('https://discord.gg/U8ser55KqD') 
-    help.setLabel('join the support server!')
-    
     message.channel.send(help)
 
     }}
