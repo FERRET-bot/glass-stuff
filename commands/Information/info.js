@@ -20,7 +20,13 @@ module.exports = {
       info.addField('prefixes', "``"+config.prefixes+"``")
       info.addField('version', "``"+config.version+"``")
       info.addField('contact (email)', "``jaelyn@jaedev.net``")
- //     info.addField('------------------------------------------', "")
 
+      let button = new disbut.MessageButton()
+  .setStyle('url')
+  .setURL('https://discord.gg/U8ser55KqD') 
+  .setLabel('join the Support Server!') 
+  .setDisabled(); 
+
+    message.channel.send('need help?', button);
     message.channel.send(info)
     }}
