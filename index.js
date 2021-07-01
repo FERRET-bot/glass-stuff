@@ -230,7 +230,7 @@ try{
 }
 
 bot.on('ready', () => {
-    client.user.setActivity(`?help || ${config.status}`, { type: "WATCHING" })
+    client.user.setActivity(`?help || ${config.status}`, { type: "PLAYING" })
     });
 
 client.login(config.token)
