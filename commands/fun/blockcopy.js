@@ -12,7 +12,7 @@ module.exports = {
         var split = txt.split("")
         var endstring = ""
         split.forEach(current=>{
-            endstring = endstring+":regional_indicator_"+current.toString()+": "
+            endstring = endstring+":regional_indicator_"+current.toString().toLowerCase()+": "
 
         })
         endstring = endstring.replace(/:regional_indicator_ : /g, " ");
