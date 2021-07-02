@@ -1,7 +1,7 @@
 const Discord = require('discord.js'); // used for message embeds, etc
 
   module.exports = {
-      name: 'reset data',
+      name: 'resetdata',
       description: "resets all data (not really)",
       usage: "<YES / NO>",
       cooldown: 10,
