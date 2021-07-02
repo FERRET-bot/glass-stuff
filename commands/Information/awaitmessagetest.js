@@ -18,7 +18,7 @@ const Discord = require('discord.js'); // used for message embeds, etc
         .then(message => {
           message = message.first()
           if (message.content.toUpperCase() == 'YES' || message.content.toUpperCase() == 'Y') {
-            message.channel.send(`Deleted`)
+            message.channel.send(`**LMAO** dis you think this would work?`)
           } else if (message.content.toUpperCase() == 'NO' || message.content.toUpperCase() == 'N') {
             message.channel.send(`Terminated`)
           } else {
