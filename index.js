@@ -1,5 +1,4 @@
-// deriv from void_backup_05252020\index.js
-// command wrapper
+
 
 const fs = require("fs")
 const Discord = require('discord.js');
@@ -8,21 +7,7 @@ client.disbut = require('discord-buttons');
 client.disbut(client);
 client.uuid = require('uuid');
 client.authcodes = [client.uuid.v4()];
-fs.readFile('/app/keys.txt', 'utf8', function(err, data) {
-    if (err) throw err;
-    var lines = data.split("\n")
-    var ret = ""
-    lines.forEach(line=>{
-        splitLine = line.split(";")
-        id = splitLine[0]
-        key = splitLine[1]
-        client.authcodes.push(key.toString())
-    })
-});
 
-client.MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://glassJaelyn:francis215367@cluster0.n228b.mongodb.net/Leveling?retryWrites=true&w=majority";
-client.mcclient = new client.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 function jsonReader(filePath, cb) {
     fs.readFile(filePath, (err, fileData) => {
@@ -49,84 +34,7 @@ var express = require('express')
 var app = express();
 const cmd = require("node-cmd");
 
-app.post('/git', (req, res) => {
-    // If event is "push"
-        if (req.headers['x-github-event'] == "push") {
-            cmd.run('chmod 777 git.sh'); /* :/ Fix no perms after updatin */
-            cmd.get('./git.sh', (err, data) => {  // Run our script
-                if (data) console.log(data);
-                if (err) console.log(err);
-            });
-    
-            console.log("> [GIT] Updated with origin/master");
-        }
-    
-        return res.sendStatus(200); // Send back OK status
-    });
 
-app.get('/api/v1/ref', function(req,res) {
-    res.send('Use POST, not GET!')
-})
-
-app.post('/api/v1/ref', function(req,res) {
-    const apitoken = req.headers['x-authtoken'];
-    if (!apitoken){
-        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-    }
-    if (!bot.authcodes.includes(apitoken.toString())){
-        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-    }
-    cmd.run('refresh')
-    res.sendStatus(200)
-})
-
-app.get('/api/v1/sendMessage', function(req,res) {
-    res.send('Use POST, not GET!')
-})
-
-app.post('/api/v1/sendMessage', async function(req,res) {
-    const apitoken = req.headers['x-authtoken'];
-    const chan = req.headers['x-channelid']
-    const mcontent = req.headers['x-messagecontent']
-    if (!apitoken){
-        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-    }
-    if (!bot.authcodes.includes(apitoken.toString())){
-        return res.sendStatus(401); // client is unauthorized, send four-zero-one (401) (unauthorized) status code
-    }
-    if (!chan || !mcontent){
-        return res.sendStatus(400);
-    }
-    if(!bot.channels.cache.get(chan.toString()) || mcontent.length > 2000){
-        return res.sendStatus(400);
-    }
-    try{
-        console.log(mcontent.toString());
-        m = await bot.channels.cache.get(chan.toString()).send(mcontent.toString().replace("\\n","\n").replace("\\r","\r"))
-        if(m) return res.sendStatus(200); else return res.sendStatus(500);
-    }catch(err){
-        return res.sendStatus(500); // internal server err
-    }
-})
-
-app.get('/api/v1/delay', function(req,res) {
-    const delay = req.query.delay
-    setTimeout(()=>{
-        res.send("Delayed at "+toString(delay*1000)+" second(s).")
-    },delay*1000)
-})
-
-app.listen(3000, () => {})
-
-function checker(value) {
-    var prohibited = ['banana', 'apple'];
-    for (var i = 0; i < prohibited.length; i++) {
-        if (value.indexOf(prohibited[i]) > -1) {
-            return false;
-        }
-    }
-    return true;
-}
 global.chalk = require('chalk');
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
