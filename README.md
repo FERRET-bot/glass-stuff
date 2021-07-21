@@ -1,6 +1,4 @@
-# bot-stuff
-
-[Join the Discord](https://discord.gg/bKMUMASZDh "Discord Server")
+# Glass-bot
 
 ### Developers
 
@@ -14,9 +12,11 @@
 
 ## Just incase
 you did not get all of the correct node modules installed:
+
 1) ``npm install`` all of the modules
-2) DM Jaelyn, one of the Developers
+
 
 #### Status
-Not Released
-If you somehow can access this repo and you are not a developer, please DM the main owner, FERRET!
+public
+
+this repo is now public and can be viewed by everyone
